@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <ImageView
+        app:srcCompat="@drawable/ball"
+        android:id="@+id/imageView4"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/ivBall2"
+        android:layout_toRightOf="@+id/ivBall2"
+        android:layout_toEndOf="@+id/ivBall2"/>
+
+    <TextView
+        android:text="*Time*"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvGame"
+        android:layout_toRightOf="@+id/tvGame"
+        android:layout_toEndOf="@+id/tvGame"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:id="@+id/tvTime"/>
+
+    <TextView
+        android:text="*Date*"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="43dp"
+        android:layout_marginEnd="43dp"
+        android:id="@+id/textView3"
+        android:layout_alignBaseline="@+id/tvTime"
+        android:layout_alignBottom="@+id/tvTime"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="18sp"/>
+
+    <ImageView
+        app:srcCompat="@drawable/ball"
+        android:id="@+id/ivBall2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/ivBall1"
+        android:layout_toRightOf="@+id/ivBall1"
+        android:layout_toEndOf="@+id/ivBall1"/>
+
+    <ImageView
+        app:srcCompat="@drawable/ball"
+        android:id="@+id/ivBall1"
+        android:layout_marginTop="13dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tvGame"
+        android:layout_alignLeft="@+id/tvGame"
+        android:layout_alignStart="@+id/tvGame"/>
+
+    <TextView
+        android:text="Pick4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="11dp"
+        android:id="@+id/tvGame"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:text="$"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignRight="@+id/tvTime"
+        android:layout_alignEnd="@+id/tvTime"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView
+        android:text="$"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginTop="21dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginEnd="11dp"
+        android:layout_alignTop="@+id/ivBall1"
+        android:layout_alignRight="@+id/tvGame"
+        android:layout_alignEnd="@+id/tvGame"/>
+
+    <TextView
+        android:text="$"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignRight="@+id/imageView4"
+        android:layout_alignEnd="@+id/imageView4"/>
+
+    <ImageView
+        app:srcCompat="@drawable/ball"
+        android:id="@+id/ivBall3"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_toRightOf="@+id/imageView4"
+        android:layout_toEndOf="@+id/imageView4"/>
+
+    <TextView
+        android:text="$"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_marginRight="23dp"
+        android:layout_marginEnd="23dp"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignRight="@+id/ivBall3"
+        android:layout_alignEnd="@+id/ivBall3"/>
+
+</RelativeLayout>
