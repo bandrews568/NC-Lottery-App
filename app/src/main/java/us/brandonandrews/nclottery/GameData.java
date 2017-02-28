@@ -12,8 +12,7 @@ import java.util.HashMap;
 
 public class GameData {
 
-    public static HashMap<String, String> pick3(JSONObject jsonObject) throws JSONException,
-                                                                              NullPointerException {
+    public static HashMap<String, String> pick3(JSONObject jsonObject) throws JSONException {
         JSONObject gameData = jsonObject.getJSONObject("pick3");
 
         String gameTime = gameData.getString("drawing_time");
