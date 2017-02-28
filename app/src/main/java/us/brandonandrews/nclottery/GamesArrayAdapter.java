@@ -51,8 +51,6 @@ public class GamesArrayAdapter extends ArrayAdapter{
     private ProgressBar mProgressBar;
     private String mGamesJSONDataString;
     private JSONObject mGamesJSONData;
-//    private String url = "http://192.168.0.7:8000/games/all/";
-
     private String url = "http://172.17.197.150:8000/games/all/";
 
     public GamesArrayAdapter(Context context, ListView lv, ProgressBar progressBar,

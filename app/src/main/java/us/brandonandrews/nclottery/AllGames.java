@@ -1,7 +1,8 @@
 package us.brandonandrews.nclottery;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -12,22 +13,24 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
-import static us.brandonandrews.nclottery.Game.PICK3;
-import static us.brandonandrews.nclottery.Game.PICK4;
 
 
-public class MainActivity extends AppCompatActivity {
+public class AllGames extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_all_games);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Start all games
-        Intent allGameIntent = new Intent(this, AllGames.class);
-        startActivity(allGameIntent);
+        ProgressBar progressBarMainScreen = (ProgressBar) findViewById(R.id.progressBarMainScreen);
+        ListView lvGames = (ListView) findViewById(R.id.lvGames);
+        lvGames.setVisibility(View.INVISIBLE);
+
+        ArrayList<Game> gameList = new ArrayList<>();
+        gameList.add(Game.PICK3);
+        progressBarMainScreen.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -51,4 +54,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }
