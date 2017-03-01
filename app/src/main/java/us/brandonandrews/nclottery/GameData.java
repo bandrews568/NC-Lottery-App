@@ -22,17 +22,18 @@ public class GameData {
 
         String rawGameNumbers = gameData.getString("drawing_numbers");
         String[] gameNumbers = formatNumberData(rawGameNumbers);
-        String ball1 = gameNumbers[0];
-        String ball2 = gameNumbers[1];
-        String ball3 = gameNumbers[2];
 
         HashMap<String, String> pick3Data = new HashMap<>();
+
         pick3Data.put("name", "pick3");
         pick3Data.put("time", fullGameTime);
         pick3Data.put("date", formattedGameDate);
-        pick3Data.put("ball1", ball1);
-        pick3Data.put("ball2", ball2);
-        pick3Data.put("ball3", ball3);
+
+        for (int i = 0; i < gameNumbers.length; i++) {
+            String ballNumber = "ball" + (i + 1);
+            String ballValue = gameNumbers[i];
+            pick3Data.put(ballNumber, ballValue);
+        }
 
         return pick3Data;
     }
@@ -48,19 +49,18 @@ public class GameData {
 
         String rawGameNumbers = gameData.getString("drawing_numbers");
         String[] gameNumbers = formatNumberData(rawGameNumbers);
-        String ball1 = gameNumbers[0];
-        String ball2 = gameNumbers[1];
-        String ball3 = gameNumbers[2];
-        String ball4 = gameNumbers[3];
 
         HashMap<String, String> pick4Data = new HashMap<>();
+
         pick4Data.put("name", "pick4");
         pick4Data.put("time", fullGameTime);
         pick4Data.put("date", formattedGameDate);
-        pick4Data.put("ball1", ball1);
-        pick4Data.put("ball2", ball2);
-        pick4Data.put("ball3", ball3);
-        pick4Data.put("ball4", ball4);
+
+        for (int i = 0; i < gameNumbers.length; i++) {
+            String ballNumber = "ball" + (i + 1);
+            String ballValue = gameNumbers[i];
+            pick4Data.put(ballNumber, ballValue);
+        }
 
         return pick4Data;
     }
@@ -73,22 +73,18 @@ public class GameData {
 
         String rawGameNumbers = gameData.getString("drawing_numbers");
         String[] gameNumbers = formatNumberData(rawGameNumbers);
-        String ball1 = gameNumbers[0];
-        String ball2 = gameNumbers[1];
-        String ball3 = gameNumbers[2];
-        String ball4 = gameNumbers[3];
-        String ball5 = gameNumbers[4];
 
         HashMap<String, String> cash5Data = new HashMap<>();
+
         cash5Data.put("name", "cash5");
         cash5Data.put("date", formattedGameDate);
-        cash5Data.put("ball1", ball1);
-        cash5Data.put("ball2", ball2);
-        cash5Data.put("ball3", ball3);
-        cash5Data.put("ball4", ball4);
-        cash5Data.put("ball5", ball5);
 
-
+        for (int i = 0; i < gameNumbers.length; i++) {
+            String ballNumber = "ball" + (i + 1);
+            String ballValue = gameNumbers[i];
+            cash5Data.put(ballNumber, ballValue);
+        }
+        
         return cash5Data;
     }
 
