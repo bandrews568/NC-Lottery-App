@@ -1,15 +1,12 @@
 package us.brandonandrews.nclottery;
 
 
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 public class GameData {
@@ -68,17 +65,6 @@ public class GameData {
         return pick4Data;
     }
 
-
-
-    private static String changeGameTime(String time) {
-        if (time.equals("E")) {
-            time = "Evening";
-        } else {
-            time = "Day";
-        }
-        return time;
-    }
-
     public static void setupGameData(View convertGroup, HashMap<String, String> data) {
 
         String gameName = data.get("name");
@@ -119,17 +105,19 @@ public class GameData {
     }
 
     private static String formatDate(String date) {
-        SimpleDateFormat formatDate;
-        String formattedDate;
+        // Date format: 2017-01-18
+        String[] splitDate = date.split("-");
+        String formattedDate = splitDate[1] + "-" + splitDate[2];
 
-        try {
-            formatDate = new SimpleDateFormat("mm-dd-yyyy");
-            formattedDate = formatDate.parse(date).toString();
-        } catch (ParseException e) {
-            e.printStackTrace();
-            Log.e("GAME DATA", "Error parsing date string");
-            formattedDate = null;
-        }
         return formattedDate;
+    }
+
+    private static String changeGameTime(String time) {
+        if (time.equals("E")) {
+            time = "Evening";
+        } else {
+            time = "Day";
+        }
+        return time;
     }
 }

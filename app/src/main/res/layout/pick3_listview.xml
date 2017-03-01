@@ -60,7 +60,7 @@
         android:text="$"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvBall2"
+        android:id="@+id/tvBall3"
         android:layout_alignBaseline="@+id/tvBall2"
         android:layout_alignBottom="@+id/tvBall2"
         android:layout_alignRight="@+id/ivBall3"
