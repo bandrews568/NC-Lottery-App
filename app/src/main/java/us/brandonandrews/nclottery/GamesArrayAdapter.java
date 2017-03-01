@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import static us.brandonandrews.nclottery.Game.CASH5;
 import static us.brandonandrews.nclottery.Game.PICK3;
 import static us.brandonandrews.nclottery.Game.PICK4;
 
@@ -34,7 +35,8 @@ public class GamesArrayAdapter extends ArrayAdapter {
 
     private static final String TAG = "GAMES ARRAY ADAPTER";
 
-    private int[] gameLayouts = {R.layout.pick3_listview, R.layout.pick4_listview};
+    private int[] gameLayouts = {R.layout.pick3_listview, R.layout.pick4_listview,
+                                 R.layout.cash5_listview};
     private Context context;
     private ArrayList<Game> games;
     private JSONObject jsonString;
@@ -74,7 +76,18 @@ public class GamesArrayAdapter extends ArrayAdapter {
                     GameData.setupGameData(convertView, pick4GameData);
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.e(TAG, "Error JSON: pick3");
+                    Log.e(TAG, "Error JSON: pick4");
+                }
+                break;
+            case CASH5:
+                layoutFile = gameLayouts[CASH5.ordinal()];
+                convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
+                try {
+                    HashMap<String, String> pick5GameData = GameData.cash5(jsonString);
+                    GameData.setupGameData(convertView, pick5GameData);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Error JSON: cash5");
                 }
                 break;
             }

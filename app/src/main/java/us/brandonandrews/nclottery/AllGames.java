@@ -137,6 +137,7 @@ public class AllGames extends AppCompatActivity {
                 ArrayList<Game> gameList = new ArrayList<>();
                 gameList.add(Game.PICK3);
                 gameList.add(Game.PICK4);
+                gameList.add(Game.CASH5);
 
                 GamesArrayAdapter gamesArrayAdapter = new GamesArrayAdapter(context, gameList, jsonDataString);
                 lvGames.setAdapter(gamesArrayAdapter);

@@ -65,6 +65,33 @@ public class GameData {
         return pick4Data;
     }
 
+    public static HashMap<String, String> cash5(JSONObject jsonObject) throws JSONException {
+        JSONObject gameData = jsonObject.getJSONObject("cash5");
+
+        String gameDate = gameData.getString("drawing_date");
+        String formattedGameDate = formatDate(gameDate);
+
+        String rawGameNumbers = gameData.getString("drawing_numbers");
+        String[] gameNumbers = formatNumberData(rawGameNumbers);
+        String ball1 = gameNumbers[0];
+        String ball2 = gameNumbers[1];
+        String ball3 = gameNumbers[2];
+        String ball4 = gameNumbers[3];
+        String ball5 = gameNumbers[4];
+
+        HashMap<String, String> cash5Data = new HashMap<>();
+        cash5Data.put("name", "cash5");
+        cash5Data.put("date", formattedGameDate);
+        cash5Data.put("ball1", ball1);
+        cash5Data.put("ball2", ball2);
+        cash5Data.put("ball3", ball3);
+        cash5Data.put("ball4", ball4);
+        cash5Data.put("ball5", ball5);
+
+
+        return cash5Data;
+    }
+
     public static void setupGameData(View convertGroup, HashMap<String, String> data) {
 
         String gameName = data.get("name");
@@ -87,9 +114,20 @@ public class GameData {
             tvGameTime.setText(gameTime);
         } else if (gameName.equals("pick4")) {
             TextView tvBallFour = (TextView) convertGroup.findViewById(R.id.tvBall4);
+
             String ballFour = data.get("ball4");
+
             tvBallFour.setText(ballFour);
             tvGameTime.setText(gameTime);
+        } else if (gameName.equals("cash5")) {
+            TextView tvBallFour = (TextView) convertGroup.findViewById(R.id.tvBall4);
+            TextView tvBallFive = (TextView) convertGroup.findViewById(R.id.tvBall5);
+
+            String ballFour = data.get("ball4");
+            String ballFive = data.get("ball5");
+
+            tvBallFour.setText(ballFour);
+            tvBallFive.setText(ballFive);
         }
 
         tvGameDate.setText(gameDate);
