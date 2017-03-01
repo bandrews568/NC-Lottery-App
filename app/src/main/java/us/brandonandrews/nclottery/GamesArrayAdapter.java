@@ -1,31 +1,18 @@
 package us.brandonandrews.nclottery;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.ConnectException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -45,12 +32,16 @@ enum Game {
 
 public class GamesArrayAdapter extends ArrayAdapter {
 
+    private static final String TAG = "GAMES ARRAY ADAPTER";
+
     private int[] gameLayouts = {R.layout.pick3_listview, R.layout.pick4_listview};
+    private Context context;
     private ArrayList<Game> games;
     private JSONObject jsonString;
 
     public GamesArrayAdapter(Context context, ArrayList<Game> games, JSONObject jsonString) {
         super(context, 0, games);
+        this.context = context;
         this.games = games;
         this.jsonString = jsonString;
     }
@@ -60,43 +51,34 @@ public class GamesArrayAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Game game = games.get(position);
-        int layoutFile = -1;
+        int layoutFile;
 
         // TODO Fix this later
         switch (game) {
             case PICK3:
                 layoutFile = gameLayouts[PICK3.ordinal()];
+                convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
                 try {
                     HashMap<String, String> pick3GameData = GameData.pick3(jsonString);
-                    setupGameData(layoutFile, parent, pick3GameData);
+                    GameData.setupGameData(convertView, pick3GameData);
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.e("GAMES ARRAY ADAPTER", "Error JSON: pick3");
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                    Log.e("GAMES ARRAY ADAPTER", "Error Null");
+                    Log.e(TAG, "Error JSON: pick3");
                 }
                 break;
             case PICK4:
                 layoutFile = gameLayouts[PICK4.ordinal()];
+                convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
+                try {
+                    HashMap<String, String> pick4GameData = GameData.pick4(jsonString);
+                    GameData.setupGameData(convertView, pick4GameData);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Error JSON: pick3");
+                }
                 break;
             }
 
-        if (layoutFile != -1) {
-            convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
-            }
         return convertView;
-    }
-
-    public View setupGameData(int layoutFile, ViewGroup parent,HashMap<String, String> data) {
-        View layout = LayoutInflater.from(getContext()).inflate(layoutFile, parent , false);
-        TextView tvGameTime = (TextView) layout.findViewById(R.id.tvTime);
-        TextView tvGameDate = (TextView) layout.findViewById(R.id.tvDate);
-
-        String gameTime = data.get("Time");
-        tvGameTime.setText(gameTime);
-        System.out.println("setupGameData called");
-        System.out.println(data.get("Time")); // TODO: this is working, but isn't updating the view
-        return layout;
     }
 }

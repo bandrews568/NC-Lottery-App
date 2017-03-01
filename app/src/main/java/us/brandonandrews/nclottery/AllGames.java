@@ -30,6 +30,8 @@ import java.util.ArrayList;
 
 public class AllGames extends AppCompatActivity {
 
+    private static final String TAG = "ALL GAMES";
+
     protected JSONObject jsonDataString;
     private Context context;
     private String url = "http://172.17.197.150:8000/games/all/";
@@ -93,15 +95,15 @@ public class AllGames extends AppCompatActivity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line + "\n");
-                    Log.d("JSON TASK", line);
+                    Log.d(TAG, line);
                 }
 
                 return buffer.toString();
 
             } catch (MalformedURLException e) {
-                Log.e("JSON TASK", "Bad URL: " + params[0]);
+                Log.e(TAG, "Bad URL: " + params[0]);
             } catch (IOException e) {
-                Log.e("JSON TASK", "IOException");
+                Log.e(TAG, "IOException");
                 e.printStackTrace();
             } finally {
                 if (connection != null) {
@@ -113,7 +115,7 @@ public class AllGames extends AppCompatActivity {
                         reader.close();
                     }
                 } catch (IOException e) {
-                    Log.e("JSON TASK", "IOException: when closing reader");
+                    Log.e(TAG, "IOException: when closing reader");
                     e.printStackTrace();
                 }
             }
@@ -134,14 +136,16 @@ public class AllGames extends AppCompatActivity {
                 // TODO this should be dynamic with settings menu
                 ArrayList<Game> gameList = new ArrayList<>();
                 gameList.add(Game.PICK3);
+                gameList.add(Game.PICK4);
 
                 GamesArrayAdapter gamesArrayAdapter = new GamesArrayAdapter(context, gameList, jsonDataString);
                 lvGames.setAdapter(gamesArrayAdapter);
 
-                progressBarMainScreen.setVisibility(View.VISIBLE);
+                progressBarMainScreen.setVisibility(View.INVISIBLE);
+                lvGames.setVisibility(View.VISIBLE);
 
             } catch (JSONException e) {
-                Log.e("JSON TASK", "Error converting result to JSON object");
+                Log.e(TAG, "Error converting result to JSON object");
                 e.printStackTrace();
             }
         }
