@@ -21,9 +21,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AllGames"
+            android:name=".AllGamesActivity"
             android:label="@string/title_activity_all_games"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -124,7 +124,7 @@ public class GameData {
 
             tvBallFour.setText(ballFour);
             tvBallFive.setText(ballFive);
-        }
+        } 
 
         tvGameDate.setText(gameDate);
 
@@ -134,16 +134,13 @@ public class GameData {
     }
 
     private static String[] formatNumberData(String numbersString) {
-        String[] numbers = numbersString.split(",");
-        return numbers;
+        return numbersString.split(",");
     }
 
     private static String formatDate(String date) {
         // Date format: 2017-01-18
         String[] splitDate = date.split("-");
-        String formattedDate = splitDate[1] + "-" + splitDate[2];
-
-        return formattedDate;
+        return splitDate[1] + "-" + splitDate[2];
     }
 
     private static String changeGameTime(String time) {

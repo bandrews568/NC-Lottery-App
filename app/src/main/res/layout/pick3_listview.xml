@@ -57,18 +57,6 @@
         android:layout_alignStart="@+id/tvGame"/>
 
     <TextView
-        android:text="$"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvBall3"
-        android:layout_alignBaseline="@+id/tvBall2"
-        android:layout_alignBottom="@+id/tvBall2"
-        android:layout_alignRight="@+id/ivBall3"
-        android:layout_alignEnd="@+id/ivBall3"
-        android:layout_marginRight="23dp"
-        android:layout_marginEnd="23dp"/>
-
-    <TextView
         android:text="Pick3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -105,5 +93,17 @@
         android:layout_alignTop="@+id/ivBall1"
         android:layout_alignRight="@+id/tvGame"
         android:layout_alignEnd="@+id/tvGame"/>
+
+    <TextView
+        android:text="$"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvBall3"
+        android:layout_marginRight="26dp"
+        android:layout_marginEnd="26dp"
+        android:layout_alignBaseline="@+id/tvBall2"
+        android:layout_alignBottom="@+id/tvBall2"
+        android:layout_alignRight="@+id/ivBall3"
+        android:layout_alignEnd="@+id/ivBall3" />
 
 </RelativeLayout>

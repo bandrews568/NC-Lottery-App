@@ -55,7 +55,6 @@ public class GamesArrayAdapter extends ArrayAdapter {
         Game game = games.get(position);
         int layoutFile;
 
-        // TODO Fix this later
         switch (game) {
             case PICK3:
                 layoutFile = gameLayouts[PICK3.ordinal()];
