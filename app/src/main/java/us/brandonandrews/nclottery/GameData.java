@@ -28,6 +28,7 @@ public class GameData {
         pick3Data.put("name", "pick3");
         pick3Data.put("time", fullGameTime);
         pick3Data.put("date", formattedGameDate);
+        pick3Data.put("sum", sumItUp(gameNumbers));
 
         for (int i = 0; i < gameNumbers.length; i++) {
             String ballNumber = "ball" + (i + 1);
@@ -55,6 +56,7 @@ public class GameData {
         pick4Data.put("name", "pick4");
         pick4Data.put("time", fullGameTime);
         pick4Data.put("date", formattedGameDate);
+        pick4Data.put("sum", sumItUp(gameNumbers));
 
         for (int i = 0; i < gameNumbers.length; i++) {
             String ballNumber = "ball" + (i + 1);
@@ -92,12 +94,15 @@ public class GameData {
 
         String gameName = data.get("name");
 
-        TextView tvGameTime = (TextView) convertGroup.findViewById(R.id.tvTime);
         TextView tvGameDate = (TextView) convertGroup.findViewById(R.id.tvDate);
 
         TextView tvBallOne = (TextView) convertGroup.findViewById(R.id.tvBall1);
         TextView tvBallTwo = (TextView) convertGroup.findViewById(R.id.tvBall2);
         TextView tvBallThree = (TextView) convertGroup.findViewById(R.id.tvBall3);
+
+        // Pick3 and Pick4 only
+        TextView tvSumItUp = (TextView) convertGroup.findViewById(R.id.tvSumItUp);
+        TextView tvGameTime = (TextView) convertGroup.findViewById(R.id.tvTime);
 
         String gameTime = data.get("time");
         String gameDate = data.get("date");
@@ -107,12 +112,14 @@ public class GameData {
         String ballThree = data.get("ball3");
 
         if (gameName.equals("pick3")) {
+            tvSumItUp.setText(data.get("sum"));
             tvGameTime.setText(gameTime);
+
         } else if (gameName.equals("pick4")) {
             TextView tvBallFour = (TextView) convertGroup.findViewById(R.id.tvBall4);
-
             String ballFour = data.get("ball4");
 
+            tvSumItUp.setText(data.get("sum"));
             tvBallFour.setText(ballFour);
             tvGameTime.setText(gameTime);
         } else if (gameName.equals("cash5")) {
@@ -150,5 +157,14 @@ public class GameData {
             time = "Day";
         }
         return time;
+    }
+
+    private static String sumItUp(String[] numberArray) {
+        int sumItup = 0;
+
+        for (int i = 0; i < numberArray.length; i++) {
+            sumItup += Integer.parseInt(numberArray[i]);
+        }
+        return Integer.toString(sumItup);
     }
 }

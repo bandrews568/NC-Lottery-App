@@ -1,7 +1,5 @@
 package us.brandonandrews.nclottery;
 
-import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;

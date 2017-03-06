@@ -127,4 +127,24 @@
         android:layout_alignRight="@+id/ivBall3"
         android:layout_alignEnd="@+id/ivBall3"/>
 
+    <SurfaceView
+        android:layout_width="40dp"
+        android:layout_height="35dp"
+        android:id="@+id/surfaceView"
+        android:background="@android:color/holo_green_light"
+        android:layout_alignBottom="@+id/tvBall4"
+        android:layout_toRightOf="@+id/ivBall3"
+        android:layout_toEndOf="@+id/ivBall3"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp" />
+
+    <TextView
+        android:text="$"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSumItUp"
+        android:layout_above="@+id/tvBall4"
+        android:layout_toLeftOf="@+id/tvDate"
+        android:layout_toStartOf="@+id/tvDate" />
+
 </RelativeLayout>
