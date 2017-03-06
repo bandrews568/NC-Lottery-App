@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+        <item android:title="All Games"
+            android:id="@+id/nav_all_games" />
         <item
-            android:id="@+id/nav_first_fragment"
+            android:id="@+id/nav_pick3"
             android:icon="@drawable/ball"
-            android:title="First" />
+            android:title="Pick3" />
         <item
-            android:id="@+id/nav_second_fragment"
+            android:id="@+id/nav_Pick4"
             android:icon="@drawable/ball"
-            android:title="Second" />
+            android:title="Pick4" />
         <item
-            android:id="@+id/nav_third_fragment"
+            android:id="@+id/nav_cash5"
             android:icon="@drawable/ball"
-            android:title="Third" />
+            android:title="Cash5" />
+        <item android:title="Lucky For Life"
+            android:id="@+id/nav_lucky_for_life" />
+        <item android:title="Mega Millions"
+            android:id="@+id/nav_mega_millions" />
+        <item android:title="Powerball"
+            android:id="@+id/nav_powerball" />
     </group>
 </menu>
