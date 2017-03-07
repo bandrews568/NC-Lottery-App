@@ -1,13 +1,24 @@
-package us.brandonandrews.nclottery;
+package us.brandonandrews.nclottery.models;
 
 
+import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+
+import us.brandonandrews.nclottery.R;
+
+import static us.brandonandrews.nclottery.R.id.swipeContainer;
 
 public class GameData {
 

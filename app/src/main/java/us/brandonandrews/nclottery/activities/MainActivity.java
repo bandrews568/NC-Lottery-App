@@ -1,4 +1,4 @@
-package us.brandonandrews.nclottery;
+package us.brandonandrews.nclottery.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -12,6 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.fragments.AllGamesFragment;
+import us.brandonandrews.nclottery.fragments.Cash5Fragment;
+import us.brandonandrews.nclottery.fragments.LuckyForLifeFragment;
+import us.brandonandrews.nclottery.fragments.MegaMillionsFragment;
+import us.brandonandrews.nclottery.fragments.Pick3Fragment;
+import us.brandonandrews.nclottery.fragments.Pick4Fragment;
+import us.brandonandrews.nclottery.fragments.PowerballFragment;
 
 
 public class MainActivity extends AppCompatActivity {

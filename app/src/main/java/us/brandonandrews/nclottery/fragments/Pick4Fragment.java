@@ -1,4 +1,4 @@
-package us.brandonandrews.nclottery;
+package us.brandonandrews.nclottery.fragments;
 
 import android.support.v4.app.Fragment;
 

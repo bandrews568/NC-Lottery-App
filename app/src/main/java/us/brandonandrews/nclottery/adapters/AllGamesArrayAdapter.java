@@ -1,5 +1,4 @@
-package us.brandonandrews.nclottery;
-
+package us.brandonandrews.nclottery.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,22 +14,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import us.brandonandrews.nclottery.Game;
+import us.brandonandrews.nclottery.models.GameData;
+import us.brandonandrews.nclottery.R;
+
 import static us.brandonandrews.nclottery.Game.CASH5;
 import static us.brandonandrews.nclottery.Game.PICK3;
 import static us.brandonandrews.nclottery.Game.PICK4;
 
-enum Game {
-    PICK3,
-    PICK4,
-    CASH5,
-    POWERBALL,
-    MEGA_MILLIONS,
-    LUCKY_FOR_LIFE
-}
-
-
-
-public class GamesArrayAdapter extends ArrayAdapter {
+/**
+ * Created by brandon on 3/6/17.
+ */
+public class AllGamesArrayAdapter extends ArrayAdapter {
 
     private static final String TAG = "GAMES ARRAY ADAPTER";
 
@@ -41,7 +35,7 @@ public class GamesArrayAdapter extends ArrayAdapter {
     private ArrayList<Game> games;
     private JSONObject jsonString;
 
-    public GamesArrayAdapter(Context context, ArrayList<Game> games, JSONObject jsonString) {
+    public AllGamesArrayAdapter(Context context, ArrayList<Game> games, JSONObject jsonString) {
         super(context, 0, games);
         this.context = context;
         this.games = games;

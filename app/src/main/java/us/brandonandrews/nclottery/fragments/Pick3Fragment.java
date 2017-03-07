@@ -1,8 +1,8 @@
-package us.brandonandrews.nclottery;
+package us.brandonandrews.nclottery.fragments;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,23 +23,26 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import us.brandonandrews.nclottery.adapters.AllGamesArrayAdapter;
+import us.brandonandrews.nclottery.Game;
+import us.brandonandrews.nclottery.R;
 
-public class AllGamesFragment extends android.support.v4.app.Fragment {
+import static us.brandonandrews.nclottery.R.id.swipeContainer;
 
-    private static final String TAG = "ALL GAMES FRAGMENT";
 
-    private SwipeRefreshLayout swipeContainer;
+public class Pick3Fragment extends Fragment {
+
+    private String TAG = "PICK3 FRAGMENT";
 
     private JSONObject jsonDataString;
-    private String url = "http://172.17.197.150:8000/games/all/";
+    private String url = "http://172.17.197.150:8000/games/pick3/";
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
     private View view;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_all_games, parent, false);
+        return inflater.inflate(R.layout.fragment_pick3, parent, false);
     }
 
     @Override
@@ -47,22 +50,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         this.view = view;
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
-
-        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                requestQueue.add(newStringRequest());
-            }
-        });
-
         requestQueue.add(newStringRequest());
-
-        // TODO change the color of this to fit the rest of the UI
-        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
     }
 
     private StringRequest newStringRequest() {
@@ -111,9 +99,9 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         gameList.add(Game.PICK4);
         gameList.add(Game.CASH5);
 
-        GamesArrayAdapter gamesArrayAdapter = new GamesArrayAdapter(
+        AllGamesArrayAdapter allGamesArrayAdapter = new AllGamesArrayAdapter(
                 getActivity().getApplicationContext(), gameList, jsonDataString);
-        lvGames.setAdapter(gamesArrayAdapter);
+        lvGames.setAdapter(allGamesArrayAdapter);
 
         progressBarMainScreen.setVisibility(View.INVISIBLE);
         lvGames.setVisibility(View.VISIBLE);
