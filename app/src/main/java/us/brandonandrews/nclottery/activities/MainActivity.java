@@ -86,10 +86,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-    // TODO make all fragments
+
     public void selectDrawerItem(MenuItem menuItem) {
         Fragment fragment = null;
         Class fragmentClass;
+
         switch(menuItem.getItemId()) {
             case R.id.nav_all_games:
                 fragmentClass = AllGamesFragment.class;

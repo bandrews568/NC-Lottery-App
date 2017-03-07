@@ -14,17 +14,15 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import us.brandonandrews.nclottery.Game;
+import us.brandonandrews.nclottery.models.Games.*;
 import us.brandonandrews.nclottery.models.GameData;
 import us.brandonandrews.nclottery.R;
 
-import static us.brandonandrews.nclottery.Game.CASH5;
-import static us.brandonandrews.nclottery.Game.PICK3;
-import static us.brandonandrews.nclottery.Game.PICK4;
+import static us.brandonandrews.nclottery.models.Games.Game.CASH5;
+import static us.brandonandrews.nclottery.models.Games.Game.PICK3;
+import static us.brandonandrews.nclottery.models.Games.Game.PICK4;
 
-/**
- * Created by brandon on 3/6/17.
- */
+
 public class AllGamesArrayAdapter extends ArrayAdapter {
 
     private static final String TAG = "GAMES ARRAY ADAPTER";

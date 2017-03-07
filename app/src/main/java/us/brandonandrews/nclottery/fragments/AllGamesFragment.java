@@ -23,9 +23,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import us.brandonandrews.nclottery.adapters.AllGamesArrayAdapter;
-import us.brandonandrews.nclottery.Game;
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.adapters.AllGamesArrayAdapter;
+import us.brandonandrews.nclottery.models.Games.Game;
 
 
 public class AllGamesFragment extends android.support.v4.app.Fragment {
