@@ -11,16 +11,21 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import us.brandonandrews.nclottery.R;
 
 import static us.brandonandrews.nclottery.R.id.swipeContainer;
 
 public class GameData {
+
+    private final static String TAG = "GAME DATA";
 
     public static HashMap<String, String> pick3(JSONObject jsonObject) throws JSONException {
         JSONObject gameData = jsonObject.getJSONObject("pick3");
@@ -170,12 +175,39 @@ public class GameData {
         return time;
     }
 
-    private static String sumItUp(String[] numberArray) {
+    public static String sumItUp(String[] numberArray) {
         int sumItup = 0;
 
         for (int i = 0; i < numberArray.length; i++) {
             sumItup += Integer.parseInt(numberArray[i]);
         }
         return Integer.toString(sumItup);
+    }
+
+    public static List<JSONObject> makeJSONArrayList(String jsonString) {
+        List<JSONObject> jsonArrayList = new ArrayList<>();
+
+        try {
+            JSONArray jsonArray = new JSONArray(jsonString);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonobject = jsonArray.getJSONObject(i);
+                jsonArrayList.add(jsonobject);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Log.e(TAG, "Error makeJSONArrayList()");
+        }
+        return jsonArrayList;
+    }
+
+    public static List<Pick3> makeListOfPick3Drawings(List<JSONObject> jsonObjectArrayList, int count) {
+        List<Pick3> pick3ObjectList = new ArrayList<>();
+
+        for (int i =0; i < count; i++) {
+            JSONObject currentJsonObject = jsonObjectArrayList.get(i);
+            Pick3 pick3 = new Pick3(currentJsonObject);
+            pick3ObjectList.add(pick3);
+        }
+        return pick3ObjectList;
     }
 }

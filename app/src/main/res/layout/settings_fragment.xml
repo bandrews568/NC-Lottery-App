@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="16dp"
+        android:text="Games shown on homescreen"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="0dp"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbPick3"
+        android:layout_width="95dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Pick3"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:layout_marginLeft="72dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbPick4"
+        android:layout_width="95dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Pick4"
+        app:layout_constraintLeft_toRightOf="@+id/cbPick3"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <CheckBox
+        android:id="@+id/cbCash5"
+        android:layout_width="95dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Cash5"
+        app:layout_constraintTop_toBottomOf="@+id/cbPick3"
+        android:layout_marginLeft="72dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbLuckyForLife"
+        android:layout_width="136dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Lucky For Life"
+        app:layout_constraintTop_toBottomOf="@+id/cbPick4"
+        app:layout_constraintLeft_toRightOf="@+id/cbCash5"
+        android:layout_marginLeft="34dp" />
+
+    <CheckBox
+        android:id="@+id/cbPowerball"
+        android:layout_width="107dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Powerball"
+        app:layout_constraintTop_toBottomOf="@+id/cbCash5"
+        android:layout_marginLeft="72dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbMegaMillions"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:checked="true"
+        android:text="Mega Millions"
+        app:layout_constraintTop_toBottomOf="@+id/cbLuckyForLife"
+        app:layout_constraintLeft_toRightOf="@+id/cbPowerball"
+        android:layout_marginLeft="22dp" />
+
+</android.support.constraint.ConstraintLayout>

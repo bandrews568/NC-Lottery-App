@@ -1,5 +1,7 @@
 package us.brandonandrews.nclottery.activities;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -21,6 +23,7 @@ import us.brandonandrews.nclottery.fragments.MegaMillionsFragment;
 import us.brandonandrews.nclottery.fragments.Pick3Fragment;
 import us.brandonandrews.nclottery.fragments.Pick4Fragment;
 import us.brandonandrews.nclottery.fragments.PowerballFragment;
+import us.brandonandrews.nclottery.fragments.SettingsFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView nvDrawer;
     private ActionBarDrawerToggle drawerToggle;
 
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,15 +44,17 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         nvDrawer = (NavigationView) findViewById(R.id.nvView);
         setupDrawerContent(nvDrawer);
         drawerToggle = setupDrawerToggle();
         drawer.addDrawerListener(drawerToggle);
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.main_activity_fragment_placeholder, new AllGamesFragment());
-        ft.commit();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.main_activity_fragment_placeholder, new AllGamesFragment());
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -61,6 +68,14 @@ public class MainActivity extends AppCompatActivity {
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
+
+        if (item.getItemId() == R.id.action_settings) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_activity_fragment_placeholder, new SettingsFragment())
+                    .commit();
+        }
+
         return super.onOptionsItemSelected(item);
     }
 

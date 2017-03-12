@@ -1,5 +1,7 @@
 package us.brandonandrews.nclottery.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -40,6 +42,10 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     private StringRequest stringRequest;
     private View view;
 
+    public Snackbar snackbar;
+    public boolean snackbarIsShowing;
+
+    private SharedPreferences settingsPrefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -49,6 +55,8 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         this.view = view;
+
+        settingsPrefs = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
@@ -64,13 +72,13 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
 
         // TODO change the color of this to fit the rest of the UI
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+                                               android.R.color.holo_green_light,
+                                               android.R.color.holo_orange_light,
+                                               android.R.color.holo_red_light);
     }
 
     private StringRequest newStringRequest() {
-        stringRequest =new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.i(TAG, response);
@@ -82,20 +90,38 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String message = "Connection Error";
-                Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE)
+                snackbar = Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_INDEFINITE)
                         .setAction("REFRESH", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 swipeContainer.setRefreshing(false);
                                 requestQueue.add(newStringRequest());
+                                snackbarIsShowing = false;
                             }
-                        })
-                        .show();
+                        });
+                snackbar.show();
+                snackbarIsShowing = true;
                 Log.e(TAG, "Error getting JSON from " + url);
                 Log.e(TAG, error.toString());
             }
         });
         return stringRequest;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (snackbarIsShowing){
+            snackbar.dismiss();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (snackbar != null && snackbarIsShowing) {
+            snackbar.show();
+        }
     }
 
     private void updateUI(String jsonString) {
@@ -109,7 +135,6 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         lvGames.setVisibility(View.INVISIBLE);
         ProgressBar progressBarMainScreen = (ProgressBar) view.findViewById(R.id.progressBarMainScreen);
 
-        // TODO this should be dynamic with settings menu
         ArrayList<Game> gameList = new ArrayList<>();
         gameList.add(Game.PICK3);
         gameList.add(Game.PICK4);
@@ -123,7 +148,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         lvGames.setVisibility(View.VISIBLE);
     }
 
-    public void refreshToast() {
+    private void refreshToast() {
         Toast.makeText(getActivity().getApplicationContext(), "Refreshed", Toast.LENGTH_SHORT).show();
     }
 }

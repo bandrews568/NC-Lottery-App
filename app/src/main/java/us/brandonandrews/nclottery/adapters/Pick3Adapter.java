@@ -5,9 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import us.brandonandrews.nclottery.fragments.Pick3ResultsFragment;
 
 
@@ -29,7 +26,7 @@ public class Pick3Adapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return Pick3ResultsFragment.newInstance();
+        return new Pick3ResultsFragment().newInstance(context);
     }
 
     @Override

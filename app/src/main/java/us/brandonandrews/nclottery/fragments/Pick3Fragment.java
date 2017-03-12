@@ -24,7 +24,7 @@ public class Pick3Fragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-        viewPager.setAdapter(new Pick3Adapter(getFragmentManager(), getContext()));
+        viewPager.setAdapter(new Pick3Adapter(getFragmentManager(), getActivity()));
 
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
