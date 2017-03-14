@@ -24,6 +24,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.adapters.AllGamesArrayAdapter;
@@ -42,8 +44,9 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     private StringRequest stringRequest;
     private View view;
 
+    private ArrayList<String> gameList = new ArrayList<>();
+
     public Snackbar snackbar;
-    public boolean snackbarIsShowing;
 
     private SharedPreferences settingsPrefs;
 
@@ -56,7 +59,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         this.view = view;
 
-        settingsPrefs = getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        settingsPrefs = this.getActivity().getSharedPreferences("Settings", Context.MODE_PRIVATE);
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
@@ -96,11 +99,9 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
                             public void onClick(View v) {
                                 swipeContainer.setRefreshing(false);
                                 requestQueue.add(newStringRequest());
-                                snackbarIsShowing = false;
                             }
                         });
                 snackbar.show();
-                snackbarIsShowing = true;
                 Log.e(TAG, "Error getting JSON from " + url);
                 Log.e(TAG, error.toString());
             }
@@ -111,19 +112,11 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        if (snackbarIsShowing){
+        if (snackbar != null) {
             snackbar.dismiss();
         }
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (snackbar != null && snackbarIsShowing) {
-            snackbar.show();
-        }
-    }
-
+    
     private void updateUI(String jsonString) {
         try {
             jsonDataString = new JSONObject(jsonString);
@@ -135,10 +128,9 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         lvGames.setVisibility(View.INVISIBLE);
         ProgressBar progressBarMainScreen = (ProgressBar) view.findViewById(R.id.progressBarMainScreen);
 
-        ArrayList<Game> gameList = new ArrayList<>();
-        gameList.add(Game.PICK3);
-        gameList.add(Game.PICK4);
-        gameList.add(Game.CASH5);
+        for (String string : checkGamesSelectedFromSettings()) {
+            gameList.add(string);
+        }
 
         AllGamesArrayAdapter allGamesArrayAdapter = new AllGamesArrayAdapter(
                 getActivity().getApplicationContext(), gameList, jsonDataString);
@@ -147,6 +139,20 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         progressBarMainScreen.setVisibility(View.INVISIBLE);
         lvGames.setVisibility(View.VISIBLE);
     }
+
+    private List<String> checkGamesSelectedFromSettings() {
+        List<String> gamesToInclude = new ArrayList<>();
+        String[] games = {"pick3", "pick4", "cash5", "luckyForLife", "megaMillions", "powerball"};
+
+        for (String game : games) {
+            String getGame = settingsPrefs.getString(game, null);
+            if (getGame != null) {
+                System.out.println(getGame);
+            }
+        }
+        return gamesToInclude;
+    }
+
 
     private void refreshToast() {
         Toast.makeText(getActivity().getApplicationContext(), "Refreshed", Toast.LENGTH_SHORT).show();

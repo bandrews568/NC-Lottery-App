@@ -30,10 +30,10 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
     private int[] gameLayouts = {R.layout.pick3_listview, R.layout.pick4_listview,
                                  R.layout.cash5_listview};
     private Context context;
-    private ArrayList<Game> games;
+    private ArrayList<String> games;
     private JSONObject jsonString;
 
-    public AllGamesArrayAdapter(Context context, ArrayList<Game> games, JSONObject jsonString) {
+    public AllGamesArrayAdapter(Context context, ArrayList<String> games, JSONObject jsonString) {
         super(context, 0, games);
         this.context = context;
         this.games = games;
@@ -44,11 +44,11 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        Game game = games.get(position);
+        String game = games.get(position);
         int layoutFile;
 
         switch (game) {
-            case PICK3:
+            case "pick3":
                 layoutFile = gameLayouts[PICK3.ordinal()];
                 convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
                 try {
@@ -59,7 +59,7 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
                     Log.e(TAG, "Error JSON: pick3");
                 }
                 break;
-            case PICK4:
+            case "pick4":
                 layoutFile = gameLayouts[PICK4.ordinal()];
                 convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
                 try {
@@ -70,7 +70,7 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
                     Log.e(TAG, "Error JSON: pick4");
                 }
                 break;
-            case CASH5:
+            case "cash5":
                 layoutFile = gameLayouts[CASH5.ordinal()];
                 convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
                 try {

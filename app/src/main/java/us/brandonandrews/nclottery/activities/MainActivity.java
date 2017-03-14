@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        sharedPreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("Settings", Context.MODE_APPEND);
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         nvDrawer = (NavigationView) findViewById(R.id.nvView);

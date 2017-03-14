@@ -10,12 +10,16 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import us.brandonandrews.nclottery.R;
 
 
 public class SettingsFragment extends android.support.v4.app.Fragment {
 
     private SharedPreferences sharedPreferences;
+    private List<CheckBox> checkBoxes = new ArrayList<>();
 
     @Nullable
     @Override
@@ -36,53 +40,58 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
         final CheckBox cbPowerball = (CheckBox) view.findViewById(R.id.cbPowerball);
         final CheckBox cbMegaMillions = (CheckBox) view.findViewById(R.id.cbMegaMillions);
 
+        checkBoxes.add(cbPick3);
+        checkBoxes.add(cbPick4);
+        checkBoxes.add(cbCash5);
+        checkBoxes.add(cbLuckyForLife);
+        checkBoxes.add(cbPowerball);
+        checkBoxes.add(cbMegaMillions);
+
+        checkIfGamesAreChecked();
+
         CompoundButton.OnCheckedChangeListener checkBoxListener = new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 switch (buttonView.getId()) {
                     case R.id.cbPick3:
                         if (cbPick3.isChecked()) {
-                            editor.putString("pick3", "checked");
+                            editor.putBoolean("pick3", true);
                         } else {
-                            editor.putString("pick3", "unchecked");
+                            editor.putBoolean("pick3", false);
                         }
-                        break;
                     case R.id.cbPick4:
                         if (cbPick4.isChecked()) {
-                            editor.putString("pick4", "checked");
+                            editor.putBoolean("pick4", true);
                         } else {
-                            editor.putString("pick4", "unchecked");
+                            editor.putBoolean("pick4", false);
                         }
-                        break;
                     case R.id.cbCash5:
                         if (cbCash5.isChecked()) {
-                            editor.putString("cash5", "checked");
+                            editor.putBoolean("cash5", true);
                         } else {
-                            editor.putString("cash5", "unchecked");
+                            editor.putBoolean("cash5", false);
                         }
-                        break;
                     case R.id.cbLuckyForLife:
                         if (isChecked) {
-                            editor.putString("luckyForLife", "checked");
+                            editor.putBoolean("luckyForLife", true);
                         } else {
-                            editor.putString("luckyForLife", "unchecked");
+                            editor.putBoolean("luckyForLife", false);
+
                         }
-                        break;
                     case R.id.cbMegaMillions:
                         if (cbMegaMillions.isChecked()) {
-                            editor.putString("megaMillions", "checked");
+                            editor.putBoolean("megaMillions", true);
                         } else {
-                            editor.putString("megaMillions", "unchecked");
+                            editor.putBoolean("megaMillions", false);
                         }
-                        break;
                     case R.id.cbPowerball:
                         if (cbPowerball.isChecked()) {
-                            editor.putString("powerball", "checked");
+                            editor.putBoolean("powerball", true);
                         } else {
-                            editor.putString("powerball", "unchecked");
+                            editor.putBoolean("powerball", false);
                         }
-                        break;
-
+                    default:
+                        editor.commit();
                 }
             }
         };
@@ -93,5 +102,29 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
         cbLuckyForLife.setOnCheckedChangeListener(checkBoxListener);
         cbMegaMillions.setOnCheckedChangeListener(checkBoxListener);
         cbPowerball.setOnCheckedChangeListener(checkBoxListener);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!checkBoxes.isEmpty()) {
+            checkIfGamesAreChecked();
+        }
+    }
+
+    private void checkIfGamesAreChecked() {
+        String[] games = {"pick3", "pick4", "cash5", "luckyForLife", "powerball", "megaMillions"};
+        for (int i = 0; i < checkBoxes.size(); i++) {
+            // See if the user has disabled that game; default to true if they haven't manually
+            // disabled that game.
+            boolean gameIsChecked = sharedPreferences.getBoolean(games[i], true);
+            CheckBox checkBox = checkBoxes.get(i);
+
+            if (gameIsChecked) {
+                checkBox.setChecked(true);
+            } else {
+                checkBox.setChecked(false);
+            }
+        }
     }
 }
