@@ -27,8 +27,6 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
 
     private static final String TAG = "GAMES ARRAY ADAPTER";
 
-    private int[] gameLayouts = {R.layout.pick3_listview, R.layout.pick4_listview,
-                                 R.layout.cash5_listview};
     private Context context;
     private ArrayList<String> games;
     private JSONObject jsonString;
@@ -49,7 +47,7 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
 
         switch (game) {
             case "pick3":
-                layoutFile = gameLayouts[PICK3.ordinal()];
+                layoutFile = R.layout.pick3_listview;
                 convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
                 try {
                     HashMap<String, String> pick3GameData = GameData.pick3(jsonString);
@@ -60,7 +58,7 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
                 }
                 break;
             case "pick4":
-                layoutFile = gameLayouts[PICK4.ordinal()];
+                layoutFile = R.layout.pick4_listview;
                 convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
                 try {
                     HashMap<String, String> pick4GameData = GameData.pick4(jsonString);
@@ -71,7 +69,7 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
                 }
                 break;
             case "cash5":
-                layoutFile = gameLayouts[CASH5.ordinal()];
+                layoutFile = R.layout.cash5_listview;
                 convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
                 try {
                     HashMap<String, String> pick5GameData = GameData.cash5(jsonString);
@@ -81,7 +79,17 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
                     Log.e(TAG, "Error JSON: cash5");
                 }
                 break;
-            }
+            case "luckyForLife":
+                layoutFile = R.layout.lucky_for_life_listview;
+                convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
+                try {
+                    HashMap<String, String> luckyForLifeGameData = GameData.luckyForLife(jsonString);
+                    GameData.setupGameData(convertView, luckyForLifeGameData);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Error JSON: lucky_for_life");
+                }
+        }
 
         return convertView;
     }

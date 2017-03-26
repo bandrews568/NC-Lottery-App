@@ -34,14 +34,14 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
     private static final String TAG = "PICK3 RESULTS FRAGMENT";
 
     private Context context;
-
-    private String url = "http://172.17.197.150:8000/games/pick3/";
-
-    private List<JSONObject> jsonObjectList = new ArrayList<>();
+    private ListView listView;
     List<Pick3> pick3List;
-    private RequestQueue requestQueue;
+
 
     public String jsonString;
+    private List<JSONObject> jsonObjectList = new ArrayList<>();
+    private RequestQueue requestQueue;
+    private String url = "http://172.17.197.150:8000/games/pick3/";
 
     public Pick3ResultsFragment newInstance(Context context) {
         this.context = context;
@@ -63,9 +63,10 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        requestQueue.add(newStringRequest(url));
+        requestQueue.add(newStringRequest(url, view));
 
         RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rgPick3);
+        // TODO this can replaced by a recycle view
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -85,18 +86,24 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
                 pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, count);
             }
         });
-        Pick3ResultsAdapter resultsAdapter = new Pick3ResultsAdapter(getActivity(), pick3List);
-        ListView listView = (ListView) view.findViewById(R.id.listView);
-        listView.setAdapter(resultsAdapter);
+
+        // Default to 20 for the amount of results to get back
+        // Change the on onClickListener above
+        if (pick3List == null) {
+            pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, 20);
+        }
     }
 
-    private StringRequest newStringRequest(String url) {
+    private StringRequest newStringRequest(String url, final View view) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         jsonString = response;
                         jsonObjectList = GameData.makeJSONArrayList(jsonString);
+                        Pick3ResultsAdapter resultsAdapter = new Pick3ResultsAdapter(getActivity(), pick3List);
+                        listView = (ListView) view.findViewById(R.id.listView);
+                        listView.setAdapter(resultsAdapter);
                     }
                 }, new Response.ErrorListener() {
             @Override

@@ -113,7 +113,7 @@ public class SettingsFragment extends android.support.v4.app.Fragment {
     }
 
     private void checkIfGamesAreChecked() {
-        String[] games = {"pick3", "pick4", "cash5", "luckyForLife", "powerball", "megaMillions"};
+        String[] games = {"pick3", "pick4", "cash5", "luckyForLife", "megaMillions", "powerball"};
         for (int i = 0; i < checkBoxes.size(); i++) {
             // See if the user has disabled that game; default to true if they haven't manually
             // disabled that game.

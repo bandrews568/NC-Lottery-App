@@ -14,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -102,8 +103,29 @@ public class GameData {
             String ballValue = gameNumbers[i];
             cash5Data.put(ballNumber, ballValue);
         }
-        
         return cash5Data;
+    }
+
+    public static HashMap<String, String> luckyForLife(JSONObject jsonObject) throws JSONException {
+        JSONObject gameData = jsonObject.getJSONObject("lucky_for_life");
+
+        String gameDate = gameData.getString("drawing_date");
+        String formattedGameDate = formatDate(gameDate);
+
+        String rawGameNumbers = gameData.getString("drawing_numbers");
+        String[] gameNumbers = formatNumberData(rawGameNumbers);
+
+        HashMap<String, String> luckyForLifeData = new HashMap<>();
+
+        luckyForLifeData.put("name", "lucky_for_life");
+        luckyForLifeData.put("date", formattedGameDate);
+
+        for (int i = 0; i < gameNumbers.length; i++) {
+            String ballNumber = "ball" + (i + 1);
+            String ballValue = gameNumbers[i];
+            luckyForLifeData.put(ballNumber, ballValue);
+        }
+        return luckyForLifeData;
     }
 
     public static void setupGameData(View convertGroup, HashMap<String, String> data) {
@@ -127,28 +149,44 @@ public class GameData {
         String ballTwo = data.get("ball2");
         String ballThree = data.get("ball3");
 
-        if (gameName.equals("pick3")) {
-            tvSumItUp.setText(data.get("sum"));
-            tvGameTime.setText(gameTime);
+        switch (gameName) {
+            case "pick3":
+                tvSumItUp.setText(data.get("sum"));
+                tvGameTime.setText(gameTime);
+                break;
+            case "pick4":
+                TextView tvBallFourPick4 = (TextView) convertGroup.findViewById(R.id.tvBall4);
+                String ballFour = data.get("ball4");
 
-        } else if (gameName.equals("pick4")) {
-            TextView tvBallFour = (TextView) convertGroup.findViewById(R.id.tvBall4);
-            String ballFour = data.get("ball4");
+                tvSumItUp.setText(data.get("sum"));
+                tvBallFourPick4.setText(ballFour);
+                tvGameTime.setText(gameTime);
+                break;
+            case "cash5":
+                TextView tvBallFourCash5 = (TextView) convertGroup.findViewById(R.id.tvBall4);
+                TextView tvBallFiveCash5 = (TextView) convertGroup.findViewById(R.id.tvBall5);
 
-            tvSumItUp.setText(data.get("sum"));
-            tvBallFour.setText(ballFour);
-            tvGameTime.setText(gameTime);
-        } else if (gameName.equals("cash5")) {
-            TextView tvBallFour = (TextView) convertGroup.findViewById(R.id.tvBall4);
-            TextView tvBallFive = (TextView) convertGroup.findViewById(R.id.tvBall5);
+                String ballFourCash5 = data.get("ball4");
+                String ballFiveCash5 = data.get("ball5");
 
-            String ballFour = data.get("ball4");
-            String ballFive = data.get("ball5");
+                tvBallFourCash5.setText(ballFourCash5);
+                tvBallFiveCash5.setText(ballFiveCash5);
+                break;
+            case "lucky_for_life":
+                TextView tvBallFourLFL = (TextView) convertGroup.findViewById(R.id.tvBall4);
+                TextView tvBallFiveLFL = (TextView) convertGroup.findViewById(R.id.tvBall5);
+                TextView tvBallSixLFL = (TextView) convertGroup.findViewById(R.id.tvBall6);
 
-            tvBallFour.setText(ballFour);
-            tvBallFive.setText(ballFive);
-        } 
+                String ballFourLFL = data.get("ball4");
+                String ballFiveLFL = data.get("ball5");
+                String ballSixLFL = data.get("ball6");
 
+                tvBallFourLFL.setText(ballFourLFL);
+                tvBallFiveLFL.setText(ballFiveLFL);
+                tvBallSixLFL.setText(ballSixLFL);
+                break;
+        }
+        // All games share these traits
         tvGameDate.setText(gameDate);
 
         tvBallOne.setText(ballOne);
