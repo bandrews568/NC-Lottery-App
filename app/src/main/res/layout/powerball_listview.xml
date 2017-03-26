@@ -10,8 +10,8 @@
         android:layout_alignBottom="@+id/tvGameName"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="75dp"
-        android:layout_marginRight="75dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
         android:text="*Date*"
         android:textSize="18sp" />
 
@@ -24,9 +24,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="13dp"
-        android:text="Lucky For Life"
-        android:textSize="18sp" />
+        android:layout_marginTop="11dp"
+        android:text="Powerball"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
     <TextView
         android:id="@+id/tvBall1"
@@ -35,7 +36,7 @@
         android:layout_alignLeft="@+id/tvGameName"
         android:layout_alignStart="@+id/tvGameName"
         android:layout_below="@+id/tvGameName"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="20dp"
         android:text="$" />
 
     <TextView
@@ -43,8 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvBall1"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginLeft="23dp"
+        android:layout_marginStart="23dp"
         android:layout_toEndOf="@+id/tvBall1"
         android:layout_toRightOf="@+id/tvBall1"
         android:text="$" />
@@ -53,45 +54,50 @@
         android:id="@+id/tvBall3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$"
-        android:layout_alignBaseline="@+id/tvBall2"
-        android:layout_alignBottom="@+id/tvBall2"
-        android:layout_toRightOf="@+id/tvBall2"
+        android:layout_alignTop="@+id/tvBall2"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
         android:layout_toEndOf="@+id/tvBall2"
-        android:layout_marginLeft="17dp"
-        android:layout_marginStart="17dp" />
+        android:layout_toRightOf="@+id/tvBall2"
+        android:text="$" />
 
     <TextView
         android:id="@+id/tvBall4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_alignBaseline="@+id/tvBall3"
-        android:layout_alignBottom="@+id/tvBall3"
-        android:layout_toRightOf="@+id/tvBall3"
-        android:layout_toEndOf="@+id/tvBall3" />
+        android:layout_alignTop="@+id/tvBall3"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/tvGameName"
+        android:layout_toRightOf="@+id/tvGameName"
+        android:text="$" />
 
     <TextView
         android:id="@+id/tvBall5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$"
-        android:layout_alignBaseline="@+id/tvBall6"
-        android:layout_alignBottom="@+id/tvBall6"
-        android:layout_alignRight="@+id/tvGameName"
-        android:layout_alignEnd="@+id/tvGameName" />
+        android:layout_alignLeft="@+id/tvBall1"
+        android:layout_alignStart="@+id/tvBall1"
+        android:layout_below="@+id/tvBall1"
+        android:layout_marginTop="25dp"
+        android:text="$" />
 
     <TextView
         android:id="@+id/tvBall6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$"
-        android:layout_alignBaseline="@+id/tvBall4"
-        android:layout_alignBottom="@+id/tvBall4"
-        android:layout_toRightOf="@+id/tvGameName"
-        android:layout_toEndOf="@+id/tvGameName"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="18dp" />
+        android:layout_alignLeft="@+id/tvBall2"
+        android:layout_alignStart="@+id/tvBall2"
+        android:layout_alignTop="@+id/tvBall5"
+        android:text="$" />
+
+    <TextView
+        android:id="@+id/tvBall7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvBall6"
+        android:layout_toEndOf="@+id/tvBall3"
+        android:layout_toRightOf="@+id/tvBall3"
+        android:text="$" />
+
 </RelativeLayout>

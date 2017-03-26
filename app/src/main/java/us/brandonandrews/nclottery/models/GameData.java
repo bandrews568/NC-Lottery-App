@@ -128,6 +128,28 @@ public class GameData {
         return luckyForLifeData;
     }
 
+    public static HashMap<String, String> powerball(JSONObject jsonObject) throws JSONException {
+        JSONObject gameData = jsonObject.getJSONObject("powerball");
+
+        String gameDate = gameData.getString("drawing_date");
+        String formattedGameDate = formatDate(gameDate);
+
+        String rawGameNumbers = gameData.getString("drawing_numbers");
+        String[] gameNumbers = formatNumberData(rawGameNumbers);
+
+        HashMap<String, String> powerballGameData = new HashMap<>();
+
+        powerballGameData.put("name", "powerball");
+        powerballGameData.put("date", formattedGameDate);
+
+        for (int i = 0; i < gameNumbers.length; i++) {
+            String ballNumber = "ball" + (i + 1);
+            String ballValue = gameNumbers[i];
+            powerballGameData.put(ballNumber, ballValue);
+        }
+        return powerballGameData;
+    }
+
     public static void setupGameData(View convertGroup, HashMap<String, String> data) {
 
         String gameName = data.get("name");
@@ -185,6 +207,19 @@ public class GameData {
                 tvBallFiveLFL.setText(ballFiveLFL);
                 tvBallSixLFL.setText(ballSixLFL);
                 break;
+            case "powerball":
+                // TODO: add fields to API to include powerplay and powerball
+                TextView tvBallFourPowerball = (TextView) convertGroup.findViewById(R.id.tvBall4);
+                TextView tvBallFivePowerball = (TextView) convertGroup.findViewById(R.id.tvBall5);
+                TextView tvBallSixPowerball = (TextView) convertGroup.findViewById(R.id.tvBall6);
+
+                String ballFourPowerball = data.get("ball4");
+                String ballFivePowerball = data.get("ball5");
+                String ballSixPowerball = data.get("ball6");
+
+                tvBallFourPowerball.setText(ballFourPowerball);
+                tvBallFivePowerball.setText(ballFivePowerball);
+                tvBallSixPowerball.setText(ballSixPowerball);
         }
         // All games share these traits
         tvGameDate.setText(gameDate);

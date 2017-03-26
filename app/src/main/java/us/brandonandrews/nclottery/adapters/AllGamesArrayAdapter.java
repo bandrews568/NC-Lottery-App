@@ -89,8 +89,18 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
                     e.printStackTrace();
                     Log.e(TAG, "Error JSON: lucky_for_life");
                 }
+                break;
+            case "powerball":
+                layoutFile = R.layout.powerball_listview;
+                convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
+                try {
+                    HashMap<String, String> powerballGameData = GameData.powerball(jsonString);
+                    GameData.setupGameData(convertView, powerballGameData);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Error JSON: powerball");
+                }
         }
-
         return convertView;
     }
 }

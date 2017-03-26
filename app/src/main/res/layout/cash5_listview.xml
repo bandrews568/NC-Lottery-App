@@ -28,9 +28,9 @@
         android:layout_marginTop="13dp"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/tvGame"
-        android:layout_alignLeft="@+id/tvGame"
-        android:layout_alignStart="@+id/tvGame"/>
+        android:layout_below="@+id/tvGameName"
+        android:layout_alignLeft="@+id/tvGameName"
+        android:layout_alignStart="@+id/tvGameName"/>
 
     <TextView
         android:text="Cash5"
@@ -39,7 +39,7 @@
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="11dp"
-        android:id="@+id/tvGame"
+        android:id="@+id/tvGameName"
         android:textStyle="normal|bold"
         android:textSize="18sp"
         android:layout_alignParentTop="true"
@@ -100,8 +100,8 @@
         android:layout_marginRight="17dp"
         android:layout_marginEnd="17dp"
         android:layout_alignTop="@+id/ivBall1"
-        android:layout_alignRight="@+id/tvGame"
-        android:layout_alignEnd="@+id/tvGame" />
+        android:layout_alignRight="@+id/tvGameName"
+        android:layout_alignEnd="@+id/tvGameName" />
 
     <ImageView
         app:srcCompat="@drawable/ball"
