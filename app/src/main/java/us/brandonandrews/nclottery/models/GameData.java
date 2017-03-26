@@ -273,13 +273,13 @@ public class GameData {
         return numbersString.split(",");
     }
 
-    private static String formatDate(String date) {
+    public static String formatDate(String date) {
         // Date format: 2017-01-18
         String[] splitDate = date.split("-");
         return splitDate[1] + "-" + splitDate[2];
     }
 
-    private static String changeGameTime(String time) {
+    public static String changeGameTime(String time) {
         if (time.equals("E")) {
             time = "Evening";
         } else {

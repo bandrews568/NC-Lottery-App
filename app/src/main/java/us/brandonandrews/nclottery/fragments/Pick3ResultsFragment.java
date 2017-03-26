@@ -41,7 +41,7 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
     public String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
     private RequestQueue requestQueue;
-    private String url = "http://172.17.197.150:8000/games/pick3/";
+    private String url = "http://172.17.197.150:8000/games/pick3";
 
     public Pick3ResultsFragment newInstance(Context context) {
         this.context = context;
@@ -86,12 +86,6 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
                 pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, count);
             }
         });
-
-        // Default to 20 for the amount of results to get back
-        // Change the on onClickListener above
-        if (pick3List == null) {
-            pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, 20);
-        }
     }
 
     private StringRequest newStringRequest(String url, final View view) {
@@ -101,6 +95,11 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
                     public void onResponse(String response) {
                         jsonString = response;
                         jsonObjectList = GameData.makeJSONArrayList(jsonString);
+
+                        if (pick3List == null) {
+                            pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, 20);
+                        }
+
                         Pick3ResultsAdapter resultsAdapter = new Pick3ResultsAdapter(getActivity(), pick3List);
                         listView = (ListView) view.findViewById(R.id.listView);
                         listView.setAdapter(resultsAdapter);

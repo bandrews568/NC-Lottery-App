@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +42,8 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     private SwipeRefreshLayout swipeContainer;
 
     private JSONObject jsonDataString;
-    private String url = "http://172.31.99.21:8000/games/all"; // For Starbucks
-//    private String url = "http://172.17.197.150:8000/games/all/"; // For hotel
+//    private String url = "http://172.31.99.21:8000/games/all"; // For Starbucks
+    private String url = "http://172.17.197.150:8000/games/all/"; // For hotel
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
 
@@ -129,31 +131,32 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         lvGames.setVisibility(View.INVISIBLE);
         ProgressBar progressBarMainScreen = (ProgressBar) view.findViewById(R.id.progressBarMainScreen);
 
-        for (String string : getSelectedGamesFromSettings()) {
-            gameList.add(string);
+        getSelectedGamesFromSettings();
+
+        if (gameList.isEmpty()) {
+            TextView tvNoGames = (TextView) view.findViewById(R.id.tvNoGames);
+            tvNoGames.setVisibility(View.VISIBLE);
+            progressBarMainScreen.setVisibility(View.INVISIBLE);
+        } else {
+            AllGamesArrayAdapter allGamesArrayAdapter = new AllGamesArrayAdapter(
+                    getActivity().getApplicationContext(), gameList, jsonDataString);
+            lvGames.setAdapter(allGamesArrayAdapter);
+
+            progressBarMainScreen.setVisibility(View.INVISIBLE);
+            lvGames.setVisibility(View.VISIBLE);
         }
-
-        AllGamesArrayAdapter allGamesArrayAdapter = new AllGamesArrayAdapter(
-                getActivity().getApplicationContext(), gameList, jsonDataString);
-        lvGames.setAdapter(allGamesArrayAdapter);
-
-        progressBarMainScreen.setVisibility(View.INVISIBLE);
-        lvGames.setVisibility(View.VISIBLE);
     }
 
-    private List<String> getSelectedGamesFromSettings() {
-        List<String> gamesToInclude = new ArrayList<>();
+    private void getSelectedGamesFromSettings() {
         String[] games = {"pick3", "pick4", "cash5", "luckyForLife", "megaMillions", "powerball"};
 
         for (String game : games) {
             boolean getGame = settingsPrefs.getBoolean(game, false);
             if (getGame) {
-                gamesToInclude.add(game);
+                gameList.add(game);
             }
         }
-        return gamesToInclude;
     }
-
 
     private void refreshToast() {
         Toast.makeText(getActivity().getApplicationContext(), "Refreshed", Toast.LENGTH_SHORT).show();

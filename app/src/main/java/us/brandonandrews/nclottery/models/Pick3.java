@@ -17,8 +17,8 @@ public class Pick3 {
 
     public Pick3(JSONObject jsonObject) {
         try {
-            this.time = jsonObject.getString("drawing_time");
-            this.date = jsonObject.getString("drawing_date");
+            this.time = GameData.changeGameTime(jsonObject.getString("drawing_time"));
+            this.date = GameData.formatDate(jsonObject.getString("drawing_date"));
             String[] numbers = jsonObject.getString("drawing_numbers").split(",");
             this.ball1 = numbers[0];
             this.ball2 = numbers[1];

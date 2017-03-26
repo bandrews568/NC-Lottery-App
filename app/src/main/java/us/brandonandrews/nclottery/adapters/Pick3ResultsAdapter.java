@@ -37,12 +37,14 @@ public class Pick3ResultsAdapter extends ArrayAdapter<Pick3> {
         TextView ball1 = (TextView) convertView.findViewById(R.id.tvBall1);
         TextView ball2 = (TextView) convertView.findViewById(R.id.tvBall2);
         TextView ball3 = (TextView) convertView.findViewById(R.id.tvBall3);
+        TextView sumItUp = (TextView) convertView.findViewById(R.id.tvSumItUp);
 
-        gameTime.setText(game.date);
-        gameDate.setText(game.time);
+        gameTime.setText(game.time);
+        gameDate.setText(game.date);
         ball1.setText(game.ball1);
         ball2.setText(game.ball2);
         ball3.setText(game.ball3);
+        sumItUp.setText(game.sum);
 
         return convertView;
     }
