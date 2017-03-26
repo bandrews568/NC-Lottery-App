@@ -100,6 +100,18 @@ public class AllGamesArrayAdapter extends ArrayAdapter {
                     e.printStackTrace();
                     Log.e(TAG, "Error JSON: powerball");
                 }
+                break;
+            case "megaMillions":
+                layoutFile = R.layout.mega_millions_listview;
+                convertView = LayoutInflater.from(getContext()).inflate(layoutFile, null);
+                try {
+                    HashMap<String, String> megaMillionsGameData = GameData.megaMillions(jsonString);
+                    GameData.setupGameData(convertView, megaMillionsGameData);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "Error JSON: megaMillions");
+                }
+                break;
         }
         return convertView;
     }

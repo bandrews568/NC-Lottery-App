@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvGameName"
+        android:layout_alignBottom="@+id/tvGameName"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:text="*Date*"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvGameName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="11dp"
+        android:text="Mega Millions"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:id="@+id/tvBall1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvGameName"
+        android:layout_alignStart="@+id/tvGameName"
+        android:layout_below="@+id/tvGameName"
+        android:layout_marginTop="30dp"
+        android:text="$" />
+
+    <TextView
+        android:id="@+id/tvBall2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvBall1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/tvBall1"
+        android:layout_toRightOf="@+id/tvBall1"
+        android:text="$" />
+
+    <TextView
+        android:id="@+id/tvBall3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:layout_alignBaseline="@+id/tvBall2"
+        android:layout_alignBottom="@+id/tvBall2"
+        android:layout_toRightOf="@+id/tvBall2"
+        android:layout_toEndOf="@+id/tvBall2"
+        android:layout_marginLeft="27dp"
+        android:layout_marginStart="27dp" />
+
+    <TextView
+        android:id="@+id/tvBall4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvBall3"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/tvBall3"
+        android:layout_toRightOf="@+id/tvBall3"
+        android:text="$" />
+
+    <TextView
+        android:id="@+id/tvBall5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvBall4"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/tvGameName"
+        android:layout_toRightOf="@+id/tvGameName"
+        android:text="$" />
+
+    <TextView
+        android:id="@+id/tvMegaball"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvBall5"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@+id/tvBall5"
+        android:layout_toRightOf="@+id/tvBall5"
+        android:text="MB" />
+
+    <TextView
+        android:id="@+id/tvMultiplier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mult"
+        android:layout_alignBaseline="@+id/tvMegaball"
+        android:layout_alignBottom="@+id/tvMegaball"
+        android:layout_toLeftOf="@+id/tvDate"
+        android:layout_toStartOf="@+id/tvDate"
+        android:layout_marginRight="27dp"
+        android:layout_marginEnd="27dp" />
+</RelativeLayout>

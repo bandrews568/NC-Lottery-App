@@ -150,6 +150,30 @@ public class GameData {
         return powerballGameData;
     }
 
+    public static HashMap<String, String> megaMillions(JSONObject jsonObject) throws JSONException {
+        JSONObject gameData = jsonObject.getJSONObject("mega_millions");
+
+        String gameDate = gameData.getString("drawing_date");
+        String formattedGameDate = formatDate(gameDate);
+
+        String rawGameNumbers = gameData.getString("drawing_numbers");
+        String[] gameNumbers = formatNumberData(rawGameNumbers);
+
+        HashMap<String, String> megaMillionsGameData = new HashMap<>();
+
+        megaMillionsGameData.put("name", "megaMillions");
+        megaMillionsGameData.put("date", formattedGameDate);
+        megaMillionsGameData.put("megaball", gameData.getString("megaball"));
+        megaMillionsGameData.put("multiplier", gameData.getString("multiplier"));
+
+        for (int i = 0; i < gameNumbers.length; i++) {
+            String ballNumber = "ball" + (i + 1);
+            String ballValue = gameNumbers[i];
+            megaMillionsGameData.put(ballNumber, ballValue);
+        }
+        return megaMillionsGameData;
+    }
+
     public static void setupGameData(View convertGroup, HashMap<String, String> data) {
 
         String gameName = data.get("name");
@@ -208,7 +232,6 @@ public class GameData {
                 tvBallSixLFL.setText(ballSixLFL);
                 break;
             case "powerball":
-                // TODO: add fields to API to include powerplay and powerball
                 TextView tvBallFourPowerball = (TextView) convertGroup.findViewById(R.id.tvBall4);
                 TextView tvBallFivePowerball = (TextView) convertGroup.findViewById(R.id.tvBall5);
                 TextView tvBallSixPowerball = (TextView) convertGroup.findViewById(R.id.tvBall6);
@@ -220,6 +243,23 @@ public class GameData {
                 tvBallFourPowerball.setText(ballFourPowerball);
                 tvBallFivePowerball.setText(ballFivePowerball);
                 tvBallSixPowerball.setText(ballSixPowerball);
+                break;
+            case "mega_millions":
+                TextView tvBallFourMegaMillions = (TextView) convertGroup.findViewById(R.id.tvBall4);
+                TextView tvBallFiveMegaMillions = (TextView) convertGroup.findViewById(R.id.tvBall5);
+                TextView tvMegaball = (TextView) convertGroup.findViewById(R.id.tvMegaball);
+                TextView tvMultiplier = (TextView) convertGroup.findViewById(R.id.tvMultiplier);
+
+                String ballFourMegaMillions = data.get("ball4");
+                String ballFiveMegaMillions = data.get("ball5");
+                String megaball = data.get("megaball");
+                String multiplier = data.get("multiplier");
+
+                tvBallFourMegaMillions.setText(ballFourMegaMillions);
+                tvBallFiveMegaMillions.setText(ballFiveMegaMillions);
+                tvMegaball.setText(megaball);
+                tvMultiplier.setText(multiplier);
+                break;
         }
         // All games share these traits
         tvGameDate.setText(gameDate);
