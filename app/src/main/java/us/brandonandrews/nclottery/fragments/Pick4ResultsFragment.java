@@ -35,7 +35,7 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
     private Context context;
     private RecyclerView recyclerView;
     private Pick4RecyclerAdapter resultsAdapter;
-    List<Pick4> pick4List;
+    private List<Pick4> pick4List;
 
     public String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
@@ -73,11 +73,7 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
                     public void onResponse(String response) {
                         jsonString = response;
                         jsonObjectList = GameData.makeJSONArrayList(jsonString);
-                        pick4List = GameData.makeListOfPick4Drawings(jsonObjectList, 20);
-                        resultsAdapter = new Pick4RecyclerAdapter(getActivity(), pick4List);
-                        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPick4);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-                        recyclerView.setAdapter(resultsAdapter);
+                        setupRecyclerView(view);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -87,5 +83,13 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
             }
         });
         return stringRequest;
+    }
+
+    private void setupRecyclerView(View view) {
+        pick4List = GameData.makeListOfPick4Drawings(jsonObjectList, 20);
+        resultsAdapter = new Pick4RecyclerAdapter(getActivity(), pick4List);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPick4);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(resultsAdapter);
     }
 }

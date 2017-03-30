@@ -23,15 +23,11 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.adapters.AllGamesArrayAdapter;
-import us.brandonandrews.nclottery.models.Games.Game;
 
 
 public class AllGamesFragment extends android.support.v4.app.Fragment {
