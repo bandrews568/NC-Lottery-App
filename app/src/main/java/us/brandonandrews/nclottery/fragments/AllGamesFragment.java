@@ -42,8 +42,8 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     private SwipeRefreshLayout swipeContainer;
 
     private JSONObject jsonDataString;
-//    private String url = "http://172.31.99.21:8000/games/all"; // For Starbucks
-    private String url = "http://172.17.197.150:8000/games/all/"; // For hotel
+    private String url = "http://172.31.99.21:8000/games/all"; // For Starbucks
+//    private String url = "http://172.17.197.150:8000/games/all/"; // For hotel
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
 

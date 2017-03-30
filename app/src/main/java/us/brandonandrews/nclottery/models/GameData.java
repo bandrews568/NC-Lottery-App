@@ -195,6 +195,12 @@ public class GameData {
         String ballTwo = data.get("ball2");
         String ballThree = data.get("ball3");
 
+        // All games share these traits
+        tvGameDate.setText(gameDate);
+        tvBallOne.setText(ballOne);
+        tvBallTwo.setText(ballTwo);
+        tvBallThree.setText(ballThree);
+
         switch (gameName) {
             case "pick3":
                 tvSumItUp.setText(data.get("sum"));
@@ -261,12 +267,6 @@ public class GameData {
                 tvMultiplier.setText(multiplier);
                 break;
         }
-        // All games share these traits
-        tvGameDate.setText(gameDate);
-
-        tvBallOne.setText(ballOne);
-        tvBallTwo.setText(ballTwo);
-        tvBallThree.setText(ballThree);
     }
 
     private static String[] formatNumberData(String numbersString) {
@@ -313,14 +313,25 @@ public class GameData {
         return jsonArrayList;
     }
 
-    public static List<Pick3> makeListOfPick3Drawings(List<JSONObject> jsonObjectArrayList, int count) {
+    public static List<Pick3> makeListOfPick3Drawings(List<JSONObject> jsonObjects, int count) {
         List<Pick3> pick3ObjectList = new ArrayList<>();
 
         for (int i =0; i < count; i++) {
-            JSONObject currentJsonObject = jsonObjectArrayList.get(i);
+            JSONObject currentJsonObject = jsonObjects.get(i);
             Pick3 pick3 = new Pick3(currentJsonObject);
             pick3ObjectList.add(pick3);
         }
         return pick3ObjectList;
+    }
+
+    public static List<Pick4> makeListOfPick4Drawings(List<JSONObject> jsonObjects, int count) {
+        List<Pick4> pick4List = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            JSONObject currentJsonObject = jsonObjects.get(i);
+            Pick4 pick4 = new Pick4(currentJsonObject);
+            pick4List.add(pick4);
+        }
+        return pick4List;
     }
 }

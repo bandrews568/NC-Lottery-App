@@ -1,150 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <ImageView
-        app:srcCompat="@drawable/ball"
         android:id="@+id/imageView4"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/ivBall2"
+        android:layout_toEndOf="@+id/ivBall2"
         android:layout_toRightOf="@+id/ivBall2"
-        android:layout_toEndOf="@+id/ivBall2"/>
+        app:srcCompat="@drawable/ball" />
 
     <TextView
-        android:text="*Time*"
+        android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvGameName"
-        android:layout_toRightOf="@+id/tvGameName"
-        android:layout_toEndOf="@+id/tvGameName"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:id="@+id/tvTime"/>
+        android:layout_toEndOf="@+id/tvGameName"
+        android:layout_toRightOf="@+id/tvGameName"
+        android:text="*Time*" />
 
     <TextView
-        android:text="*Date*"
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="43dp"
-        android:layout_marginEnd="43dp"
-        android:id="@+id/tvDate"
         android:layout_alignBaseline="@+id/tvTime"
         android:layout_alignBottom="@+id/tvTime"
-        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textSize="18sp"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="43dp"
+        android:text="*Date*"
+        android:textSize="18sp" />
 
     <ImageView
-        app:srcCompat="@drawable/ball"
         android:id="@+id/ivBall2"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/ivBall1"
+        android:layout_toEndOf="@+id/ivBall1"
         android:layout_toRightOf="@+id/ivBall1"
-        android:layout_toEndOf="@+id/ivBall1"/>
+        app:srcCompat="@drawable/ball" />
 
     <ImageView
-        app:srcCompat="@drawable/ball"
         android:id="@+id/ivBall1"
-        android:layout_marginTop="13dp"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/tvGameName"
         android:layout_alignLeft="@+id/tvGameName"
-        android:layout_alignStart="@+id/tvGameName"/>
+        android:layout_alignStart="@+id/tvGameName"
+        android:layout_below="@+id/tvGameName"
+        android:layout_marginTop="13dp"
+        app:srcCompat="@drawable/ball" />
 
     <TextView
-        android:text="Pick4"
+        android:id="@+id/tvGameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
         android:layout_marginTop="11dp"
-        android:id="@+id/tvGameName"
-        android:textStyle="normal|bold"
+        android:text="Pick4"
         android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:textStyle="normal|bold" />
 
     <TextView
-        android:text="$"
+        android:id="@+id/tvBall2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvBall2"
         android:layout_alignBaseline="@+id/tvBall1"
         android:layout_alignBottom="@+id/tvBall1"
-        android:layout_alignRight="@+id/tvTime"
         android:layout_alignEnd="@+id/tvTime"
+        android:layout_alignRight="@+id/tvTime"
+        android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:text="$" />
 
     <TextView
-        android:text="$"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tvBall1"
-        android:layout_marginTop="21dp"
-        android:layout_marginRight="11dp"
-        android:layout_marginEnd="11dp"
-        android:layout_alignTop="@+id/ivBall1"
-        android:layout_alignRight="@+id/tvGameName"
-        android:layout_alignEnd="@+id/tvGameName"/>
-
-    <TextView
-        android:text="$"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/tvGameName"
+        android:layout_alignRight="@+id/tvGameName"
+        android:layout_alignTop="@+id/ivBall1"
+        android:layout_marginEnd="11dp"
+        android:layout_marginRight="11dp"
+        android:layout_marginTop="21dp"
+        android:text="$" />
+
+    <TextView
         android:id="@+id/tvBall3"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvBall2"
         android:layout_alignBottom="@+id/tvBall2"
+        android:layout_alignEnd="@+id/imageView4"
         android:layout_alignRight="@+id/imageView4"
-        android:layout_alignEnd="@+id/imageView4"/>
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:text="$" />
 
     <ImageView
-        app:srcCompat="@drawable/ball"
         android:id="@+id/ivBall3"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/imageView4"
+        android:layout_toEndOf="@+id/imageView4"
         android:layout_toRightOf="@+id/imageView4"
-        android:layout_toEndOf="@+id/imageView4"/>
+        app:srcCompat="@drawable/ball" />
 
     <TextView
-        android:text="$"
+        android:id="@+id/tvBall4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvBall4"
-        android:layout_marginRight="23dp"
-        android:layout_marginEnd="23dp"
         android:layout_alignBaseline="@+id/tvBall3"
         android:layout_alignBottom="@+id/tvBall3"
+        android:layout_alignEnd="@+id/ivBall3"
         android:layout_alignRight="@+id/ivBall3"
-        android:layout_alignEnd="@+id/ivBall3"/>
+        android:layout_marginEnd="23dp"
+        android:layout_marginRight="23dp"
+        android:text="$" />
 
     <SurfaceView
+        android:id="@+id/surfaceView"
         android:layout_width="40dp"
         android:layout_height="35dp"
-        android:id="@+id/surfaceView"
-        android:background="@android:color/holo_green_light"
         android:layout_alignBottom="@+id/tvBall4"
-        android:layout_toRightOf="@+id/ivBall3"
-        android:layout_toEndOf="@+id/ivBall3"
         android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp" />
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/ivBall3"
+        android:layout_toRightOf="@+id/ivBall3"
+        android:background="@android:color/holo_green_light" />
 
     <TextView
-        android:text="$"
+        android:id="@+id/tvSumItUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvSumItUp"
         android:layout_above="@+id/tvBall4"
         android:layout_toLeftOf="@+id/tvDate"
-        android:layout_toStartOf="@+id/tvDate" />
+        android:layout_toStartOf="@+id/tvDate"
+        android:text="$" />
 
 </RelativeLayout>
