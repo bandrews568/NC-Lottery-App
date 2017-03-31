@@ -92,15 +92,19 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 String message = "Connection Error";
-                snackbar = Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_INDEFINITE)
-                        .setAction("REFRESH", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                swipeContainer.setRefreshing(false);
-                                requestQueue.add(newStringRequest());
-                            }
-                        });
-                snackbar.show();
+
+                if (view.getRootView().isShown()) {
+                    snackbar = Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_INDEFINITE)
+                            .setAction("REFRESH", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    swipeContainer.setRefreshing(false);
+                                    requestQueue.add(newStringRequest());
+                                }
+                            });
+                    snackbar.show();
+                }
+
                 Log.e(TAG, "Error getting JSON from " + url);
                 Log.e(TAG, error.toString());
             }
@@ -111,6 +115,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        requestQueue.stop();
         if (snackbar != null) {
             snackbar.dismiss();
         }
