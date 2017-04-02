@@ -34,7 +34,7 @@ public class Pick4RecyclerAdapter extends RecyclerView.Adapter<Pick4RecyclerAdap
             tvBall2 = (TextView) itemView.findViewById(R.id.tvBall2);
             tvBall3 = (TextView) itemView.findViewById(R.id.tvBall3);
             tvBall4 = (TextView) itemView.findViewById(R.id.tvBall4);
-            tvSum = (TextView) itemView.findViewById(R.id.tvSumItUp);
+            tvSum = (TextView) itemView.findViewById(R.id.tvSum);
         }
     }
 

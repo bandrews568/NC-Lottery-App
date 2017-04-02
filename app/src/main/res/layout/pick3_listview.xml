@@ -1,131 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="25dp">
 
     <TextView
-        android:text="*Time*"
+        android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvGameName"
-        android:layout_toRightOf="@+id/tvGameName"
-        android:layout_toEndOf="@+id/tvGameName"
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp"
-        android:id="@+id/tvTime"/>
+        android:layout_marginTop="16dp"
+        android:text="*Time*"
+        app:layout_constraintLeft_toRightOf="@+id/tvGameName"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:text="*Date*"
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="43dp"
         android:layout_marginEnd="43dp"
-        android:id="@+id/tvDate"
-        android:layout_alignBaseline="@+id/tvTime"
-        android:layout_alignBottom="@+id/tvTime"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textSize="18sp"/>
+        android:layout_marginRight="43dp"
+        android:layout_marginTop="16dp"
+        android:text="*Date*"
+        android:textSize="18sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        app:srcCompat="@drawable/ball"
         android:id="@+id/ivBall3"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignTop="@+id/ivBall2"
-        android:layout_toRightOf="@+id/ivBall2"
-        android:layout_toEndOf="@+id/ivBall2"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/ball"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginEnd="139dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="139dp" />
 
     <ImageView
-        app:srcCompat="@drawable/ball"
         android:id="@+id/ivBall2"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignTop="@+id/ivBall1"
-        android:layout_toRightOf="@+id/ivBall1"
-        android:layout_toEndOf="@+id/ivBall1"/>
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/ball"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/ivBall3"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="28dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/tvTime"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="28dp" />
 
     <ImageView
-        app:srcCompat="@drawable/ball"
         android:id="@+id/ivBall1"
-        android:layout_marginTop="13dp"
-        android:layout_width="60dp"
+        android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_below="@+id/tvGameName"
-        android:layout_alignLeft="@+id/tvGameName"
-        android:layout_alignStart="@+id/tvGameName"/>
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:srcCompat="@drawable/ball"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintRight_toLeftOf="@+id/ivBall2"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="21dp" />
 
     <TextView
-        android:text="Pick3"
+        android:id="@+id/tvGameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="11dp"
-        android:id="@+id/tvGameName"
-        android:textStyle="normal|bold"
+        android:layout_marginTop="16dp"
+        android:text="Pick3"
         android:textSize="18sp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:textStyle="normal|bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:text="$"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvBall2"
-        android:layout_alignBaseline="@+id/tvBall1"
-        android:layout_alignBottom="@+id/tvBall1"
-        android:layout_alignRight="@+id/tvTime"
-        android:layout_alignEnd="@+id/tvTime"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp"/>
-
-    <TextView
-        android:text="$"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvBall1"
-        android:layout_marginTop="21dp"
-        android:layout_marginRight="11dp"
-        android:layout_marginEnd="11dp"
-        android:layout_alignTop="@+id/ivBall1"
-        android:layout_alignRight="@+id/tvGameName"
-        android:layout_alignEnd="@+id/tvGameName"/>
-
-    <TextView
-        android:text="$"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/tvBall3"
-        android:layout_marginRight="26dp"
-        android:layout_marginEnd="26dp"
-        android:layout_alignBaseline="@+id/tvBall2"
-        android:layout_alignBottom="@+id/tvBall2"
-        android:layout_alignRight="@+id/ivBall3"
-        android:layout_alignEnd="@+id/ivBall3" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="$"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvBall2"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBall3"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintLeft_toLeftOf="@+id/ivBall3"
+        app:layout_constraintRight_toRightOf="@+id/ivBall3"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <TextView
+        android:id="@+id/tvBall1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="8dp"
+        android:text="$"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvBall2"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBall1"
+        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintLeft_toLeftOf="@+id/ivBall1"
+        app:layout_constraintRight_toRightOf="@+id/ivBall1"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.555" />
 
     <SurfaceView
         android:id="@+id/surfaceView"
+        android:layout_width="51dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="46dp"
         android:background="@android:color/holo_green_light"
-        android:layout_marginLeft="12dp"
-        android:layout_marginStart="12dp"
-        android:layout_width="40dp"
-        android:layout_alignBottom="@+id/tvBall3"
-        android:layout_toRightOf="@+id/ivBall3"
-        android:layout_toEndOf="@+id/ivBall3"
-        android:layout_height="35dp" />
+        app:layout_constraintLeft_toRightOf="@+id/ivBall3"
+        android:layout_marginLeft="46dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="24dp" />
 
     <TextView
+        android:id="@+id/tvBall2"
+        android:layout_width="8dp"
+        android:layout_height="17dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginTop="8dp"
         android:text="$"
+        app:layout_constraintBottom_toBottomOf="@+id/ivBall2"
+        app:layout_constraintLeft_toLeftOf="@+id/ivBall2"
+        app:layout_constraintRight_toRightOf="@+id/ivBall2"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1" />
+
+    <TextView
+        android:id="@+id/tvSum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvSumItUp"
-        android:layout_above="@+id/tvBall3"
-        android:layout_alignRight="@+id/surfaceView"
-        android:layout_alignEnd="@+id/surfaceView"
-        android:layout_marginRight="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
+        android:layout_marginTop="8dp"
+        android:text="$"
+        app:layout_constraintBottom_toBottomOf="@+id/surfaceView"
+        app:layout_constraintRight_toRightOf="@+id/surfaceView"
+        app:layout_constraintTop_toTopOf="@+id/surfaceView" />
 
-</RelativeLayout>
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="51dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="51dp" />
+
+</android.support.constraint.ConstraintLayout>

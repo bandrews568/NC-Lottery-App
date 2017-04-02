@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import us.brandonandrews.nclottery.R;
-import us.brandonandrews.nclottery.models.GameData;
+import us.brandonandrews.nclottery.utils.GameData;
 
 public class AllGamesArrayAdapter extends ArrayAdapter {
 

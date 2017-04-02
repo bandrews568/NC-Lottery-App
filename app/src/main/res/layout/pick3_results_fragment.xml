@@ -10,45 +10,4 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/rgPick3" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Results: "
-        android:layout_alignBottom="@+id/rgPick3"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="17dp" />
-
-    <RadioGroup
-        android:id="@+id/rgPick3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="15dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView">
-
-        <RadioButton
-            android:id="@+id/rbResult5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5"
-            />
-
-        <RadioButton
-            android:id="@+id/rbResult10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="10" />
-
-        <RadioButton
-            android:id="@+id/rbResult15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="15"
-            />
-    </RadioGroup>
-
 </RelativeLayout>

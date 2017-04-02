@@ -6,6 +6,8 @@ import android.util.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import us.brandonandrews.nclottery.utils.GameData;
+
 public class Pick4 {
 
     private String time;

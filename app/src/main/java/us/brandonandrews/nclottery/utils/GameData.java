@@ -1,4 +1,4 @@
-package us.brandonandrews.nclottery.models;
+package us.brandonandrews.nclottery.utils;
 
 
 import android.util.Log;
@@ -14,6 +14,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.models.Pick3;
+import us.brandonandrews.nclottery.models.Pick4;
 
 public class GameData {
 
@@ -176,7 +178,7 @@ public class GameData {
         TextView tvBallThree = (TextView) convertGroup.findViewById(R.id.tvBall3);
 
         // Pick3 and Pick4 only
-        TextView tvSumItUp = (TextView) convertGroup.findViewById(R.id.tvSumItUp);
+        TextView tvSumItUp = (TextView) convertGroup.findViewById(R.id.tvSum);
         TextView tvGameTime = (TextView) convertGroup.findViewById(R.id.tvTime);
 
         String gameTime = data.get("time");

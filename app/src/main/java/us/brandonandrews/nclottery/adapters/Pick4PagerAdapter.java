@@ -11,7 +11,7 @@ import us.brandonandrews.nclottery.fragments.Pick4ResultsFragment;
 public class Pick4PagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "Recent", "Past", "Breakdown" };
+    private String tabTitles[] = new String[] {"Recent", "Past", "Breakdown"};
     private Context context;
 
     public Pick4PagerAdapter(FragmentManager fm, Context context) {

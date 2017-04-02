@@ -4,6 +4,8 @@ package us.brandonandrews.nclottery.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -25,7 +27,7 @@ import java.util.List;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.adapters.Pick4RecyclerAdapter;
-import us.brandonandrews.nclottery.models.GameData;
+import us.brandonandrews.nclottery.utils.GameData;
 import us.brandonandrews.nclottery.models.Pick4;
 
 public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
@@ -35,14 +37,14 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
     private Context context;
     private RecyclerView recyclerView;
     private Pick4RecyclerAdapter resultsAdapter;
+    private SwipeRefreshLayout swipeContainer;
+    private Snackbar snackbar;
     private List<Pick4> pick4List;
 
     public String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
     private RequestQueue requestQueue;
-    private String url = "http://172.31.99.21:8000/games/pick4"; // Starbucks
-//    private String url = "http://172.17.197.150:8000/games/pick4"; // hotel
-
+    private String url = "http://bandrews568.pythonanywhere.com/games/pick4";
     public Pick4ResultsFragment newInstance(Context context) {
         this.context = context;
         Pick4ResultsFragment fragment = new Pick4ResultsFragment();
@@ -62,11 +64,23 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                                               android.R.color.holo_green_light,
+                                               android.R.color.holo_orange_light,
+                                               android.R.color.holo_red_light);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                requestQueue.add(newStringRequest(url, view));
+            }
+        });
+        
         requestQueue.add(newStringRequest(url, view));
     }
 
-    private StringRequest newStringRequest(String url, final View view) {
+    private StringRequest newStringRequest(final String url, final View view) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
@@ -74,12 +88,26 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
                         jsonString = response;
                         jsonObjectList = GameData.makeJSONArrayList(jsonString);
                         setupRecyclerView(view);
+                        swipeContainer.setRefreshing(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                String message = "Connection Error";
+
+                if (view.getRootView().isShown()) {
+                    swipeContainer.setRefreshing(false);
+                    snackbar = Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_INDEFINITE)
+                            .setAction("REFRESH", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    swipeContainer.setRefreshing(false);
+                                    requestQueue.add(newStringRequest(url, view));
+                                }
+                            });
+                    snackbar.show();
+                }
                 Log.e(TAG, "Error getting json");
-                // TODO display snackbar and also add swipe down to refresh
             }
         });
         return stringRequest;

@@ -3,14 +3,12 @@ package us.brandonandrews.nclottery.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RadioGroup;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,7 +24,7 @@ import java.util.List;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.adapters.Pick3ResultsAdapter;
-import us.brandonandrews.nclottery.models.GameData;
+import us.brandonandrews.nclottery.utils.GameData;
 import us.brandonandrews.nclottery.models.Pick3;
 
 public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
@@ -41,7 +39,7 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
     public String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
     private RequestQueue requestQueue;
-    private String url = "http://172.17.197.150:8000/games/pick3";
+    private String url = "http://bandrews568.pythonanywhere.com/games/pick3";
 
     public Pick3ResultsFragment newInstance(Context context) {
         this.context = context;
@@ -64,28 +62,6 @@ public class Pick3ResultsFragment extends android.support.v4.app.Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         requestQueue.add(newStringRequest(url, view));
-
-        RadioGroup radioGroup = (RadioGroup) view.findViewById(R.id.rgPick3);
-        // TODO this can replaced by a recycle view
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-
-                int count = 0;
-
-                switch(checkedId) {
-                    case R.id.rbResult5:
-                        count = 5;
-                        break;
-                    case R.id.rbResult10:
-                        count = 10;
-                        break;
-                    case R.id.rbResult15:
-                        count = 15;
-                }
-                pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, count);
-            }
-        });
     }
 
     private StringRequest newStringRequest(String url, final View view) {
