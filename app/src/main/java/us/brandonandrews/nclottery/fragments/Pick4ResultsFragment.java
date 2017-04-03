@@ -41,10 +41,11 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
     private Snackbar snackbar;
     private List<Pick4> pick4List;
 
-    public String jsonString;
+    private String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
     private RequestQueue requestQueue;
     private String url = "http://bandrews568.pythonanywhere.com/games/pick4";
+
     public Pick4ResultsFragment newInstance(Context context) {
         this.context = context;
         Pick4ResultsFragment fragment = new Pick4ResultsFragment();
@@ -76,7 +77,7 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
                 requestQueue.add(newStringRequest(url, view));
             }
         });
-        
+
         requestQueue.add(newStringRequest(url, view));
     }
 
@@ -114,7 +115,7 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
     }
 
     private void setupRecyclerView(View view) {
-        pick4List = GameData.makeListOfPick4Drawings(jsonObjectList, 20);
+        pick4List = GameData.makeListOfPick4Drawings(jsonObjectList, 200);
         resultsAdapter = new Pick4RecyclerAdapter(getActivity(), pick4List);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPick4);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

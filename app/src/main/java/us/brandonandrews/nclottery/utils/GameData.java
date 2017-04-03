@@ -134,6 +134,8 @@ public class GameData {
 
         powerballGameData.put("name", "powerball");
         powerballGameData.put("date", formattedGameDate);
+        powerballGameData.put("powerball", gameData.getString("powerball"));
+        powerballGameData.put("powerplay", gameData.getString("powerplay"));
 
         for (int i = 0; i < gameNumbers.length; i++) {
             String ballNumber = "ball" + (i + 1);
@@ -233,17 +235,20 @@ public class GameData {
             case "powerball":
                 TextView tvBallFourPowerball = (TextView) convertGroup.findViewById(R.id.tvBall4);
                 TextView tvBallFivePowerball = (TextView) convertGroup.findViewById(R.id.tvBall5);
-                TextView tvBallSixPowerball = (TextView) convertGroup.findViewById(R.id.tvBall6);
+                TextView tvPowerball = (TextView) convertGroup.findViewById(R.id.tvPowerball);
+                TextView tvPowerplay = (TextView) convertGroup.findViewById(R.id.tvPowerplay);
 
                 String ballFourPowerball = data.get("ball4");
                 String ballFivePowerball = data.get("ball5");
-                String ballSixPowerball = data.get("ball6");
+                String powerball = data.get("powerball");
+                String powerplay = data.get("powerplay");
 
                 tvBallFourPowerball.setText(ballFourPowerball);
                 tvBallFivePowerball.setText(ballFivePowerball);
-                tvBallSixPowerball.setText(ballSixPowerball);
+                tvPowerball.setText(powerball);
+                tvPowerplay.setText(powerplay);
                 break;
-            case "mega_millions":
+            case "megaMillions":
                 TextView tvBallFourMegaMillions = (TextView) convertGroup.findViewById(R.id.tvBall4);
                 TextView tvBallFiveMegaMillions = (TextView) convertGroup.findViewById(R.id.tvBall5);
                 TextView tvMegaball = (TextView) convertGroup.findViewById(R.id.tvMegaball);
@@ -251,13 +256,24 @@ public class GameData {
 
                 String ballFourMegaMillions = data.get("ball4");
                 String ballFiveMegaMillions = data.get("ball5");
+
                 String megaball = data.get("megaball");
                 String multiplier = data.get("multiplier");
 
                 tvBallFourMegaMillions.setText(ballFourMegaMillions);
                 tvBallFiveMegaMillions.setText(ballFiveMegaMillions);
-                tvMegaball.setText(megaball);
-                tvMultiplier.setText(multiplier);
+
+                if (megaball.equals("null")) {
+                    tvMegaball.setVisibility(View.INVISIBLE);
+                } else {
+                    tvMegaball.setText(megaball);
+                }
+
+                if (multiplier.equals("null")) {
+                    tvMultiplier.setVisibility(View.INVISIBLE);
+                } else {
+                    tvMultiplier.setText(multiplier);
+                }
                 break;
         }
     }

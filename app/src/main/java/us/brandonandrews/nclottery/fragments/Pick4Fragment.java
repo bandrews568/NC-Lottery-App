@@ -27,7 +27,5 @@ public class Pick4Fragment extends Fragment {
         viewPager.setAdapter(new Pick4PagerAdapter(getFragmentManager(), getActivity()));
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
         tabLayout.setupWithViewPager(viewPager);
-
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycleViewPick4);
     }
 }

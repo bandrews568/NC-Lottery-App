@@ -83,7 +83,7 @@
         android:text="$" />
 
     <TextView
-        android:id="@+id/tvBall6"
+        android:id="@+id/tvPowerball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvBall2"
@@ -92,12 +92,13 @@
         android:text="$" />
 
     <TextView
-        android:id="@+id/tvBall7"
+        android:id="@+id/tvPowerplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvBall6"
-        android:layout_toEndOf="@+id/tvBall3"
-        android:layout_toRightOf="@+id/tvBall3"
-        android:text="$" />
+        android:text="$"
+        android:layout_alignBaseline="@+id/tvPowerball"
+        android:layout_alignBottom="@+id/tvPowerball"
+        android:layout_alignLeft="@+id/tvBall3"
+        android:layout_alignStart="@+id/tvBall3" />
 
 </RelativeLayout>
