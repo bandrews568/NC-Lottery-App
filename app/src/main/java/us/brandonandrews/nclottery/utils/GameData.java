@@ -1,8 +1,10 @@
 package us.brandonandrews.nclottery.utils;
 
 
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.json.JSONArray;

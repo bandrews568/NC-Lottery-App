@@ -65,6 +65,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                gameList.clear();
                 requestQueue.add(newStringRequest());
             }
         });
