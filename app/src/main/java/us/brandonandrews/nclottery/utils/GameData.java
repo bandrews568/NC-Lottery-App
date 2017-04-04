@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.models.Cash5;
 import us.brandonandrews.nclottery.models.Pick3;
 import us.brandonandrews.nclottery.models.Pick4;
 
@@ -344,5 +345,16 @@ public class GameData {
             pick4List.add(pick4);
         }
         return pick4List;
+    }
+
+    public static List<Cash5> makeListOfCash5Drawings(List<JSONObject> jsonObjects, int count) {
+        List<Cash5> cash5List = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            JSONObject currentJsonObject = jsonObjects.get(i);
+            Cash5 cash5 = new Cash5(currentJsonObject);
+            cash5List.add(cash5);
+        }
+        return cash5List;
     }
 }

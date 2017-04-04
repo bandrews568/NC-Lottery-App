@@ -62,7 +62,7 @@
 
     <ImageView
         android:id="@+id/ivBall1"
-        android:layout_width="0dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="21dp"
@@ -130,8 +130,8 @@
 
     <SurfaceView
         android:id="@+id/surfaceView"
-        android:layout_width="51dp"
-        android:layout_height="35dp"
+        android:layout_width="52dp"
+        android:layout_height="36dp"
         android:layout_marginBottom="24dp"
         android:layout_marginLeft="46dp"
         android:layout_marginStart="46dp"
@@ -161,12 +161,16 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="26dp"
-        android:layout_marginRight="26dp"
+        android:layout_marginRight="22dp"
         android:layout_marginTop="8dp"
         android:text="$"
         app:layout_constraintBottom_toBottomOf="@+id/surfaceView"
         app:layout_constraintRight_toRightOf="@+id/surfaceView"
-        app:layout_constraintTop_toTopOf="@+id/surfaceView" />
+        app:layout_constraintTop_toTopOf="@+id/surfaceView"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/surfaceView"
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline2"

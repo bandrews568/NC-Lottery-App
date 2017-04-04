@@ -1,6 +1,5 @@
 package us.brandonandrews.nclottery.fragments;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,51 +25,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
-import us.brandonandrews.nclottery.adapters.Pick4RecyclerAdapter;
+import us.brandonandrews.nclottery.adapters.Cash5RecyclerAdapter;
+import us.brandonandrews.nclottery.models.Cash5;
 import us.brandonandrews.nclottery.utils.GameData;
-import us.brandonandrews.nclottery.models.Pick4;
 
-public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
 
-    private static final String TAG = "PICK4 RESULTS FRAGMENT";
+public class Cash5ResultsFragment extends android.support.v4.app.Fragment {
+
+    private static final String TAG = "CASH5 RESULTS FRAGMENT";
 
     private Context context;
     private RecyclerView recyclerView;
-    private Pick4RecyclerAdapter resultsAdapter;
-    private SwipeRefreshLayout swipeContainer;
+    private Cash5RecyclerAdapter resultsAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private Snackbar snackbar;
-    private List<Pick4> pick4List;
+    private List<Cash5> cash5List;
     private String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
     private RequestQueue requestQueue;
-    private String url = "http://bandrews568.pythonanywhere.com/games/pick4";
+    private String url = "http://bandrews568.pythonanywhere.com/games/cash5";
 
-    public Pick4ResultsFragment newInstance(Context context) {
+    public Cash5ResultsFragment newInstance(Context context) {
         this.context = context;
-        Pick4ResultsFragment fragment = new Pick4ResultsFragment();
-        return fragment;
+        return new Cash5ResultsFragment();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.pick4_results_fragment, container, false);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.cash5_results_fragment, container, false);
     }
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
-        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
-        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                                               android.R.color.holo_green_light,
-                                               android.R.color.holo_orange_light,
-                                               android.R.color.holo_red_light);
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
+                                                   android.R.color.holo_green_light,
+                                                   android.R.color.holo_orange_light,
+                                                   android.R.color.holo_red_light);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 requestQueue.add(newStringRequest(url, view));
@@ -88,7 +88,7 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
                         jsonString = response;
                         jsonObjectList = GameData.makeJSONArrayList(jsonString);
                         setupRecyclerView(view);
-                        swipeContainer.setRefreshing(false);
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -96,12 +96,12 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
                 String message = "Connection Error";
 
                 if (view.getRootView().isShown()) {
-                    swipeContainer.setRefreshing(false);
+                    swipeRefreshLayout.setRefreshing(false);
                     snackbar = Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_INDEFINITE)
                             .setAction("REFRESH", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    swipeContainer.setRefreshing(false);
+                                    swipeRefreshLayout.setRefreshing(false);
                                     requestQueue.add(newStringRequest(url, view));
                                 }
                             });
@@ -114,9 +114,9 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
     }
 
     private void setupRecyclerView(View view) {
-        pick4List = GameData.makeListOfPick4Drawings(jsonObjectList, 200);
-        resultsAdapter = new Pick4RecyclerAdapter(getActivity(), pick4List);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPick4);
+        cash5List = GameData.makeListOfCash5Drawings(jsonObjectList, 200);
+        resultsAdapter = new Cash5RecyclerAdapter(getActivity(), cash5List);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(resultsAdapter);
     }

@@ -27,7 +27,7 @@ public class Cash5 {
             this.ball3 = numbers[2];
             this.ball4 = numbers[3];
             this.ball5 = numbers[4];
-            this.jackpot = String.format("%,d", jsonObject.getString("jackpot"));
+            this.jackpot = "$" + String.format("%,d", jsonObject.getInt("jackpot"));
         } catch (JSONException e) {
             Log.e("CASH5 MODEL", "Error converting to JSON");
             e.printStackTrace();

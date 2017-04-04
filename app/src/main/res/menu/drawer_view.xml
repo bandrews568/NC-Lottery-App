@@ -5,15 +5,12 @@
             android:id="@+id/nav_all_games" />
         <item
             android:id="@+id/nav_pick3"
-            android:icon="@drawable/ball"
             android:title="Pick3" />
         <item
             android:id="@+id/nav_Pick4"
-            android:icon="@drawable/ball"
             android:title="Pick4" />
         <item
             android:id="@+id/nav_cash5"
-            android:icon="@drawable/ball"
             android:title="Cash5" />
         <item android:title="Lucky For Life"
             android:id="@+id/nav_lucky_for_life" />
