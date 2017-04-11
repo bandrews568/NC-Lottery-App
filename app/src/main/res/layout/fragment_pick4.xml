@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/sliding_tabs"
+        android:id="@+id/slidingTabsPick4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabMode="fixed" />
@@ -18,9 +18,5 @@
         android:layout_weight="1"
         android:background="@android:color/white" >
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycleViewPick4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </android.support.v4.view.ViewPager>
 </LinearLayout>

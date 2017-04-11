@@ -25,7 +25,7 @@ public class Cash5Fragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         viewPager.setAdapter(new Cash5PagerAdapter(getFragmentManager(), getActivity()));
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.slidingTabsCash5);
         tabLayout.setupWithViewPager(viewPager);
     }
 }

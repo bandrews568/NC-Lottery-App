@@ -23,6 +23,7 @@ import us.brandonandrews.nclottery.fragments.MegaMillionsFragment;
 import us.brandonandrews.nclottery.fragments.Pick3Fragment;
 import us.brandonandrews.nclottery.fragments.Pick4Fragment;
 import us.brandonandrews.nclottery.fragments.PowerballFragment;
+import us.brandonandrews.nclottery.fragments.RandomFragment;
 import us.brandonandrews.nclottery.fragments.SettingsFragment;
 
 
@@ -105,31 +106,44 @@ public class MainActivity extends AppCompatActivity {
     public void selectDrawerItem(MenuItem menuItem) {
         Fragment fragment = null;
         Class fragmentClass;
+        String fragmentTag;
 
         switch(menuItem.getItemId()) {
             case R.id.nav_all_games:
                 fragmentClass = AllGamesFragment.class;
+                fragmentTag = "all";
                 break;
             case R.id.nav_pick3:
                 fragmentClass = Pick3Fragment.class;
+                fragmentTag = "pick3";
                 break;
             case R.id.nav_Pick4:
                 fragmentClass = Pick4Fragment.class;
+                fragmentTag = "pick4";
                 break;
             case R.id.nav_cash5:
                 fragmentClass = Cash5Fragment.class;
+                fragmentTag = "cash5";
                 break;
             case R.id.nav_lucky_for_life:
                 fragmentClass = LuckyForLifeFragment.class;
+                fragmentTag = "luckyForLife";
                 break;
             case R.id.nav_mega_millions:
                 fragmentClass = MegaMillionsFragment.class;
+                fragmentTag = "megaMillions";
                 break;
             case R.id.nav_powerball:
                 fragmentClass = PowerballFragment.class;
+                fragmentTag = "powerball";
+                break;
+            case R.id.nav_random:
+                fragmentClass = RandomFragment.class;
+                fragmentTag = "random";
                 break;
             default:
                 fragmentClass = AllGamesFragment.class;
+                fragmentTag = "all";
         }
 
         try {
@@ -139,8 +153,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.main_activity_fragment_placeholder,
-                                                   fragment).commit();
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.main_activity_fragment_placeholder, fragment, fragmentTag)
+                .commit();
 
         menuItem.setChecked(true);
         setTitle(menuItem.getTitle());

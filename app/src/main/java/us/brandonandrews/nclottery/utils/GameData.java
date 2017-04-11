@@ -2,6 +2,7 @@ package us.brandonandrews.nclottery.utils;
 
 
 import android.graphics.Bitmap;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -89,10 +90,13 @@ public class GameData {
         String rawGameNumbers = gameData.getString("drawing_numbers");
         String[] gameNumbers = formatNumberData(rawGameNumbers);
 
+        String jackpot = "$" + String.format("%,d", gameData.getInt("jackpot"));
+
         HashMap<String, String> cash5Data = new HashMap<>();
 
         cash5Data.put("name", "cash5");
         cash5Data.put("date", formattedGameDate);
+        cash5Data.put("jackpot", jackpot);
 
         for (int i = 0; i < gameNumbers.length; i++) {
             String ballNumber = "ball" + (i + 1);
@@ -177,7 +181,6 @@ public class GameData {
         String gameName = data.get("name");
 
         TextView tvGameDate = (TextView) convertGroup.findViewById(R.id.tvDate);
-
         TextView tvBallOne = (TextView) convertGroup.findViewById(R.id.tvBall1);
         TextView tvBallTwo = (TextView) convertGroup.findViewById(R.id.tvBall2);
         TextView tvBallThree = (TextView) convertGroup.findViewById(R.id.tvBall3);
@@ -215,12 +218,15 @@ public class GameData {
             case "cash5":
                 TextView tvBallFourCash5 = (TextView) convertGroup.findViewById(R.id.tvBall4);
                 TextView tvBallFiveCash5 = (TextView) convertGroup.findViewById(R.id.tvBall5);
+                TextView tvJackpot = (TextView) convertGroup.findViewById(R.id.tvJackpot);
 
                 String ballFourCash5 = data.get("ball4");
                 String ballFiveCash5 = data.get("ball5");
+                String jackpot = data.get("jackpot");
 
                 tvBallFourCash5.setText(ballFourCash5);
                 tvBallFiveCash5.setText(ballFiveCash5);
+                tvJackpot.setText(jackpot);
                 break;
             case "lucky_for_life":
                 TextView tvBallFourLFL = (TextView) convertGroup.findViewById(R.id.tvBall4);
@@ -279,6 +285,134 @@ public class GameData {
                 }
                 break;
         }
+    }
+
+    public static View setupPick3View(View view, String[] numbers) {
+        TextView tvGameDate = (TextView) view.findViewById(R.id.tvDate);
+        TextView tvBallOne = (TextView) view.findViewById(R.id.tvBall1);
+        TextView tvBallTwo = (TextView) view.findViewById(R.id.tvBall2);
+        TextView tvBallThree = (TextView) view.findViewById(R.id.tvBall3);
+        TextView tvSumItUp = (TextView) view.findViewById(R.id.tvSum);
+        TextView tvGameTime = (TextView) view.findViewById(R.id.tvTime);
+
+        tvBallOne.setText(numbers[0]);
+        tvBallTwo.setText(numbers[1]);
+        tvBallThree.setText(numbers[2]);
+        tvSumItUp.setText(GameData.sumItUp(numbers));
+
+        tvGameDate.setVisibility(View.INVISIBLE);
+        tvGameTime.setVisibility(View.INVISIBLE);
+        return view;
+    }
+
+    public static View setupPick4View(View view, String[] numbers) {
+        TextView tvGameDate = (TextView) view.findViewById(R.id.tvDate);
+        TextView tvBallOne = (TextView) view.findViewById(R.id.tvBall1);
+        TextView tvBallTwo = (TextView) view.findViewById(R.id.tvBall2);
+        TextView tvBallThree = (TextView) view.findViewById(R.id.tvBall3);
+        TextView tvBallFour = (TextView) view.findViewById(R.id.tvBall4);
+        TextView tvSumItUp = (TextView) view.findViewById(R.id.tvSum);
+        TextView tvGameTime = (TextView) view.findViewById(R.id.tvTime);
+
+        tvBallOne.setText(numbers[0]);
+        tvBallTwo.setText(numbers[1]);
+        tvBallThree.setText(numbers[2]);
+        tvBallFour.setText(numbers[3]);
+        tvSumItUp.setText(GameData.sumItUp(numbers));
+
+        tvGameDate.setVisibility(View.INVISIBLE);
+        tvGameTime.setVisibility(View.INVISIBLE);
+        return view;
+    }
+
+    public static View setupCash5View(View view, String[] numbers) {
+        TextView tvGameDate = (TextView) view.findViewById(R.id.tvDate);
+        TextView tvJackpot = (TextView) view.findViewById(R.id.tvJackpot);
+        TextView jackpotLabel = (TextView) view.findViewById(R.id.jackpotLabel);
+        TextView tvBallOne = (TextView) view.findViewById(R.id.tvBall1);
+        TextView tvBallTwo = (TextView) view.findViewById(R.id.tvBall2);
+        TextView tvBallThree = (TextView) view.findViewById(R.id.tvBall3);
+        TextView tvBallFour = (TextView) view.findViewById(R.id.tvBall4);
+        TextView tvBallFive = (TextView) view.findViewById(R.id.tvBall5);
+
+        tvBallOne.setText(numbers[0]);
+        tvBallTwo.setText(numbers[1]);
+        tvBallThree.setText(numbers[2]);
+        tvBallFour.setText(numbers[3]);
+        tvBallFive.setText(numbers[4]);
+
+        tvGameDate.setVisibility(View.INVISIBLE);
+        tvJackpot.setVisibility(View.INVISIBLE);
+        jackpotLabel.setVisibility(View.INVISIBLE);
+        return view;
+    }
+
+    public static View setupLuckyForLifeView(View view, String[] numbers, String luckyBall) {
+        TextView tvGameDate = (TextView) view.findViewById(R.id.tvDate);
+        TextView tvBallOne = (TextView) view.findViewById(R.id.tvBall1);
+        TextView tvBallTwo = (TextView) view.findViewById(R.id.tvBall2);
+        TextView tvBallThree = (TextView) view.findViewById(R.id.tvBall3);
+        TextView tvBallFour = (TextView) view.findViewById(R.id.tvBall4);
+        TextView tvBallFive = (TextView) view.findViewById(R.id.tvBall5);
+        TextView tvBallSix = (TextView) view.findViewById(R.id.tvBall6);
+
+        tvBallOne.setText(numbers[0]);
+        tvBallTwo.setText(numbers[1]);
+        tvBallThree.setText(numbers[2]);
+        tvBallFour.setText(numbers[3]);
+        tvBallFive.setText(numbers[4]);
+        tvBallSix.setText(luckyBall);
+
+        tvGameDate.setVisibility(View.INVISIBLE);
+        return view;
+    }
+
+    public static View setupMegaMillionsView(View view, String[] numbers, String megaBall) {
+        TextView tvGameDate = (TextView) view.findViewById(R.id.tvDate);
+        TextView tvBallOne = (TextView) view.findViewById(R.id.tvBall1);
+        TextView tvBallTwo = (TextView) view.findViewById(R.id.tvBall2);
+        TextView tvBallThree = (TextView) view.findViewById(R.id.tvBall3);
+        TextView tvBallFour = (TextView) view.findViewById(R.id.tvBall4);
+        TextView tvBallFive = (TextView) view.findViewById(R.id.tvBall5);
+        TextView tvMegaball = (TextView) view.findViewById(R.id.tvMegaball);
+        TextView tvMultiplier = (TextView) view.findViewById(R.id.tvMultiplier);
+        TextView multiplierLabel = (TextView) view.findViewById(R.id.multipilerLabel);
+
+        tvBallOne.setText(numbers[0]);
+        tvBallTwo.setText(numbers[1]);
+        tvBallThree.setText(numbers[2]);
+        tvBallFour.setText(numbers[3]);
+        tvBallFive.setText(numbers[4]);
+        tvMegaball.setText(megaBall);
+
+        tvGameDate.setVisibility(View.INVISIBLE);
+        tvMultiplier.setVisibility(View.INVISIBLE);
+        multiplierLabel.setVisibility(View.INVISIBLE);
+        return view;
+    }
+
+    public static View setupPowerballView(View view, String[] numbers, String powerball) {
+        TextView tvGameDate = (TextView) view.findViewById(R.id.tvDate);
+        TextView tvBallOne = (TextView) view.findViewById(R.id.tvBall1);
+        TextView tvBallTwo = (TextView) view.findViewById(R.id.tvBall2);
+        TextView tvBallThree = (TextView) view.findViewById(R.id.tvBall3);
+        TextView tvBallFour = (TextView) view.findViewById(R.id.tvBall4);
+        TextView tvBallFive = (TextView) view.findViewById(R.id.tvBall5);
+        TextView tvPowerball = (TextView) view.findViewById(R.id.tvPowerball);
+        TextView tvPowerplay = (TextView) view.findViewById(R.id.tvPowerplay);
+        TextView powerplayLabel = (TextView) view.findViewById(R.id.powerplayLabel);
+
+        tvBallOne.setText(numbers[0]);
+        tvBallTwo.setText(numbers[1]);
+        tvBallThree.setText(numbers[2]);
+        tvBallFour.setText(numbers[3]);
+        tvBallFive.setText(numbers[4]);
+        tvPowerball.setText(powerball);
+
+        tvGameDate.setVisibility(View.INVISIBLE);
+        tvPowerplay.setVisibility(View.INVISIBLE);
+        powerplayLabel.setVisibility(View.INVISIBLE);
+        return view;
     }
 
     private static String[] formatNumberData(String numbersString) {

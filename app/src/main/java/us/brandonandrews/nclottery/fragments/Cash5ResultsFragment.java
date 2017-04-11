@@ -116,7 +116,7 @@ public class Cash5ResultsFragment extends android.support.v4.app.Fragment {
     private void setupRecyclerView(View view) {
         cash5List = GameData.makeListOfCash5Drawings(jsonObjectList, 200);
         resultsAdapter = new Cash5RecyclerAdapter(getActivity(), cash5List);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewCash5);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(resultsAdapter);
     }

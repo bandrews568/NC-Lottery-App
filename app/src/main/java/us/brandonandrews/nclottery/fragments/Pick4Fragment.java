@@ -25,7 +25,7 @@ public class Pick4Fragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
         viewPager.setAdapter(new Pick4PagerAdapter(getFragmentManager(), getActivity()));
-        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.sliding_tabs);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.slidingTabsPick4);
         tabLayout.setupWithViewPager(viewPager);
     }
 }

@@ -18,5 +18,8 @@
             android:id="@+id/nav_mega_millions" />
         <item android:title="Powerball"
             android:id="@+id/nav_powerball" />
+        <item
+            android:id="@+id/nav_random"
+            android:title="Random" />
     </group>
 </menu>

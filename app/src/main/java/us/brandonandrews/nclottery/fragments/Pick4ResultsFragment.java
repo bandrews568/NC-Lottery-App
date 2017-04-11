@@ -113,6 +113,16 @@ public class Pick4ResultsFragment extends android.support.v4.app.Fragment {
         return stringRequest;
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     private void setupRecyclerView(View view) {
         pick4List = GameData.makeListOfPick4Drawings(jsonObjectList, 200);
         resultsAdapter = new Pick4RecyclerAdapter(getActivity(), pick4List);
