@@ -12,14 +12,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.models.Cash5;
+import us.brandonandrews.nclottery.models.LuckyForLife;
+import us.brandonandrews.nclottery.models.MegaMillions;
 import us.brandonandrews.nclottery.models.Pick3;
 import us.brandonandrews.nclottery.models.Pick4;
+import us.brandonandrews.nclottery.models.Powerball;
 
 public class GameData {
 
@@ -490,5 +494,38 @@ public class GameData {
             cash5List.add(cash5);
         }
         return cash5List;
+    }
+
+    public static List<LuckyForLife> makeListOfLuckyForLifeDrawings(List<JSONObject> jsonObjects, int count) {
+        List<LuckyForLife> luckyForLifeList = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            JSONObject currentJsonObject = jsonObjects.get(i);
+            LuckyForLife luckyForLife = new LuckyForLife(currentJsonObject);
+            luckyForLifeList.add(luckyForLife);
+        }
+        return luckyForLifeList;
+    }
+
+    public static List<Powerball> makeListOfPowerballDrawings(List<JSONObject> jsonObjects, int count) {
+        List<Powerball> powerballList = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            JSONObject currentJsonObject = jsonObjects.get(i);
+            Powerball luckyForLife = new Powerball(currentJsonObject);
+            powerballList.add(luckyForLife);
+        }
+        return powerballList;
+    }
+
+    public static List<MegaMillions> makeListOfMegaMillionsDrawings(List<JSONObject> jsonObjects, int count) {
+        List<MegaMillions> megaMillionsList = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            JSONObject currentJsonObject = jsonObjects.get(i);
+            MegaMillions luckyForLife = new MegaMillions(currentJsonObject);
+            megaMillionsList.add(luckyForLife);
+        }
+        return megaMillionsList;
     }
 }

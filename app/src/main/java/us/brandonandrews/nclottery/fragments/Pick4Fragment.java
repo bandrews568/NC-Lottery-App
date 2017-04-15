@@ -1,6 +1,5 @@
 package us.brandonandrews.nclottery.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
