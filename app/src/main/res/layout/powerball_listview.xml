@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/imageView18"
@@ -196,13 +196,13 @@
         android:id="@+id/tvPowerplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
         android:text="$"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
-        app:layout_constraintLeft_toRightOf="@+id/textView3"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintLeft_toRightOf="@+id/powerplayLabel"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/powerplayLabel" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"
