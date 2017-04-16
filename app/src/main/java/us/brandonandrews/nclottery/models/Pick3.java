@@ -31,4 +31,52 @@ public class Pick3 {
             e.printStackTrace();
         }
     }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getBall1() {
+        return ball1;
+    }
+
+    public void setBall1(String ball1) {
+        this.ball1 = ball1;
+    }
+
+    public String getBall2() {
+        return ball2;
+    }
+
+    public void setBall2(String ball2) {
+        this.ball2 = ball2;
+    }
+
+    public String getBall3() {
+        return ball3;
+    }
+
+    public void setBall3(String ball3) {
+        this.ball3 = ball3;
+    }
+
+    public String getSum() {
+        return sum;
+    }
+
+    public void setSum(String sum) {
+        this.sum = sum;
+    }
 }

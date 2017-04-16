@@ -512,8 +512,8 @@ public class GameData {
 
         for (int i = 0; i < count; i++) {
             JSONObject currentJsonObject = jsonObjects.get(i);
-            Powerball luckyForLife = new Powerball(currentJsonObject);
-            powerballList.add(luckyForLife);
+            Powerball powerball = new Powerball(currentJsonObject);
+            powerballList.add(powerball);
         }
         return powerballList;
     }
@@ -523,8 +523,8 @@ public class GameData {
 
         for (int i = 0; i < count; i++) {
             JSONObject currentJsonObject = jsonObjects.get(i);
-            MegaMillions luckyForLife = new MegaMillions(currentJsonObject);
-            megaMillionsList.add(luckyForLife);
+            MegaMillions megaMillions = new MegaMillions(currentJsonObject);
+            megaMillionsList.add(megaMillions);
         }
         return megaMillionsList;
     }

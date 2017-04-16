@@ -60,9 +60,9 @@ public class LuckyForLifeFragment extends android.support.v4.app.Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
-                android.R.color.holo_green_light,
-                android.R.color.holo_orange_light,
-                android.R.color.holo_red_light);
+                                               android.R.color.holo_green_light,
+                                               android.R.color.holo_orange_light,
+                                               android.R.color.holo_red_light);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

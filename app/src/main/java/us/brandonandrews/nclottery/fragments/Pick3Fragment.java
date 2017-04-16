@@ -2,12 +2,15 @@ package us.brandonandrews.nclottery.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import com.android.volley.Request;
@@ -23,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
-import us.brandonandrews.nclottery.adapters.Pick3Adapter;
+import us.brandonandrews.nclottery.adapters.Pick3RecyclerAdapter;
 import us.brandonandrews.nclottery.models.Pick3;
 import us.brandonandrews.nclottery.utils.GameData;
 
@@ -34,11 +37,14 @@ public class Pick3Fragment extends Fragment {
     private static final String URL = "http://bandrews568.pythonanywhere.com/games/pick3";
 
     private ProgressBar progressBar;
-    private ListView listView;
+    private RecyclerView recyclerView;
     private List<Pick3> pick3List;
     private String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
     private RequestQueue requestQueue;
+    private Pick3RecyclerAdapter resultsAdapter;
+    private SwipeRefreshLayout swipeContainer;
+    private Snackbar snackbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,32 +59,49 @@ public class Pick3Fragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                                               android.R.color.holo_green_light,
+                                               android.R.color.holo_orange_light,
+                                               android.R.color.holo_red_light);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                requestQueue.add(newStringRequest(URL, view));
+            }
+        });
+
         requestQueue.add(newStringRequest(URL, view));
-        progressBar = (ProgressBar) view.findViewById(R.id.progressBar);
     }
 
-    private StringRequest newStringRequest(String url, final View view) {
+    private StringRequest newStringRequest(final String url, final View view) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         jsonString = response;
                         jsonObjectList = GameData.makeJSONArrayList(jsonString);
-
-                        if (pick3List == null) {
-                            pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, 20);
-                        }
-
-                        Pick3Adapter resultsAdapter = new Pick3Adapter(getActivity(), pick3List);
-                        listView = (ListView) view.findViewById(R.id.listView);
-                        listView.setAdapter(resultsAdapter);
-                        progressBar.setVisibility(View.INVISIBLE);
-                        listView.setVisibility(View.VISIBLE);
+                        setupRecyclerView(view);
+                        swipeContainer.setRefreshing(false);
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                String message = "Connection Error";
+
+                if (view.getRootView().isShown()) {
+                    swipeContainer.setRefreshing(false);
+                    snackbar = Snackbar.make(view.getRootView(), message, Snackbar.LENGTH_INDEFINITE)
+                            .setAction("REFRESH", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    swipeContainer.setRefreshing(false);
+                                    requestQueue.add(newStringRequest(url, view));
+                                }
+                            });
+                    snackbar.show();
+                }
                 Log.e(TAG, "Error getting json");
             }
         });
@@ -88,5 +111,13 @@ public class Pick3Fragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+    }
+
+    private void setupRecyclerView(View view) {
+        pick3List = GameData.makeListOfPick3Drawings(jsonObjectList, 200);
+        resultsAdapter = new Pick3RecyclerAdapter(getActivity(), pick3List);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPick3);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(resultsAdapter);
     }
 }
