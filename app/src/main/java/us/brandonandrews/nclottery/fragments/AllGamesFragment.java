@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.Urls;
 import us.brandonandrews.nclottery.adapters.AllGamesArrayAdapter;
 
 
@@ -38,7 +39,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     private SwipeRefreshLayout swipeContainer;
 
     private JSONObject jsonDataString;
-    private String url = "http://bandrews568.pythonanywhere.com/games/all";
+    private String url = Urls.ALL_GAMES;
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
 

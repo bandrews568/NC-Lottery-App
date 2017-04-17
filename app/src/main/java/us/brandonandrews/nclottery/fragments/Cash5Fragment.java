@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.Urls;
 import us.brandonandrews.nclottery.adapters.Cash5RecyclerAdapter;
 import us.brandonandrews.nclottery.models.Cash5;
 import us.brandonandrews.nclottery.utils.GameData;
@@ -33,7 +34,7 @@ import us.brandonandrews.nclottery.utils.GameData;
 public class Cash5Fragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "CASH5 RESULTS FRAGMENT";
-    private static final String URL = "http://bandrews568.pythonanywhere.com/games/cash5";
+    private static final String URL = Urls.CASH5;
 
     private Context context;
     private RecyclerView recyclerView;

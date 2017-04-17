@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.Urls;
 import us.brandonandrews.nclottery.adapters.Pick4RecyclerAdapter;
 import us.brandonandrews.nclottery.utils.GameData;
 import us.brandonandrews.nclottery.models.Pick4;
@@ -31,7 +32,7 @@ import us.brandonandrews.nclottery.models.Pick4;
 public class Pick4Fragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "PICK4 RESULTS FRAGMENT";
-    private static final String URL = "http://bandrews568.pythonanywhere.com/games/pick4";
+    private static final String URL = Urls.PICK4;
 
     private RecyclerView recyclerView;
     private Pick4RecyclerAdapter resultsAdapter;

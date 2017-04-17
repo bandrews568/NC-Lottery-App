@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.Urls;
 import us.brandonandrews.nclottery.adapters.Pick3RecyclerAdapter;
 import us.brandonandrews.nclottery.models.Pick3;
 import us.brandonandrews.nclottery.utils.GameData;
@@ -34,9 +35,8 @@ import us.brandonandrews.nclottery.utils.GameData;
 public class Pick3Fragment extends Fragment {
 
     private static final String TAG = "PICK3 FRAGMENT";
-    private static final String URL = "http://bandrews568.pythonanywhere.com/games/pick3";
+    private static final String URL = Urls.PICK3;
 
-    private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private List<Pick3> pick3List;
     private String jsonString;

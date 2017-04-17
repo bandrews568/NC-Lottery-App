@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.Urls;
 import us.brandonandrews.nclottery.adapters.MegaMillionsRecyclerAdapter;
 import us.brandonandrews.nclottery.models.MegaMillions;
 import us.brandonandrews.nclottery.utils.GameData;
@@ -31,7 +32,7 @@ import us.brandonandrews.nclottery.utils.GameData;
 public class MegaMillionsFragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "MEGA MILLIONS";
-    private static final String URL = "http://bandrews568.pythonanywhere.com/games/megamillions";
+    private static final String URL = Urls.MEGA_MILLIONS;
 
     private RecyclerView recyclerView;
     private MegaMillionsRecyclerAdapter resultsAdapter;

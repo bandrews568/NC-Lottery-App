@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.Urls;
 import us.brandonandrews.nclottery.adapters.PowerballRecyclerAdapter;
 import us.brandonandrews.nclottery.models.Powerball;
 import us.brandonandrews.nclottery.utils.GameData;
@@ -31,7 +32,7 @@ import us.brandonandrews.nclottery.utils.GameData;
 public class PowerballFragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "POWERBALL";
-    private static final String URL = "http://bandrews568.pythonanywhere.com/games/powerball";
+    private static final String URL = Urls.POWERBALL;
 
     private RecyclerView recyclerView;
     private PowerballRecyclerAdapter resultsAdapter;

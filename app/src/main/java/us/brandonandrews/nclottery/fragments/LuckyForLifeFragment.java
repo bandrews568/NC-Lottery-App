@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.Urls;
 import us.brandonandrews.nclottery.adapters.LuckyForLifeRecyclerAdapter;
 import us.brandonandrews.nclottery.models.LuckyForLife;
 import us.brandonandrews.nclottery.utils.GameData;
@@ -32,7 +33,7 @@ import us.brandonandrews.nclottery.utils.GameData;
 public class LuckyForLifeFragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "LUCKY FOR LIFE";
-    private static final String URL = "http://bandrews568.pythonanywhere.com/games/luckyforlife";
+    private static final String URL = Urls.LUCKY_FOR_LIFE;
 
     private RecyclerView recyclerView;
     private LuckyForLifeRecyclerAdapter resultsAdapter;
