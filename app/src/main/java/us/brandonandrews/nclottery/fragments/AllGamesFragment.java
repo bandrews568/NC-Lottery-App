@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -132,7 +133,9 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
 
         // No games are checked on settings menu
         if (gameList.isEmpty()) {
-            // TODO put message in here when no games are selected
+            TextView tvNoGames = (TextView) view.findViewById(R.id.tvNoGames);
+            tvNoGames.setVisibility(View.VISIBLE);
+            recyclerView.setVisibility(View.INVISIBLE);
         } else {
             AllGamesRecyclerAdapter allGamesRecyclerAdapter =
                     new AllGamesRecyclerAdapter(gameList, jsonDataString);

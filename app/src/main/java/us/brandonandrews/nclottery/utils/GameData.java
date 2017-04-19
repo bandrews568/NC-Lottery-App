@@ -304,6 +304,7 @@ public class GameData {
         viewHolder.getTvBall1().setText(data.get("ball1"));
         viewHolder.getTvBall2().setText(data.get("ball2"));
         viewHolder.getTvBall3().setText(data.get("ball3"));
+        viewHolder.getTvSum().setText(data.get("sum"));
     }
 
     public static void setupPick4ViewHolder(Pick4ViewHolder viewHolder, HashMap<String, String> data) {
@@ -313,6 +314,7 @@ public class GameData {
         viewHolder.getTvBall2().setText(data.get("ball2"));
         viewHolder.getTvBall3().setText(data.get("ball3"));
         viewHolder.getTvBall4().setText(data.get("ball4"));
+        viewHolder.getTvSum().setText(data.get("sum"));
     }
 
     public static void setupCash5ViewHolder(Cash5ViewHolder viewHolder, HashMap<String, String> data) {
