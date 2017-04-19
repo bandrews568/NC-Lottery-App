@@ -5,13 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,25 +27,22 @@ import java.util.ArrayList;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.Urls;
-import us.brandonandrews.nclottery.adapters.AllGamesArrayAdapter;
+import us.brandonandrews.nclottery.adapters.AllGamesRecyclerAdapter;
 
 
 public class AllGamesFragment extends android.support.v4.app.Fragment {
 
     private static final String TAG = "ALL GAMES FRAGMENT";
+    private static final String URL = Urls.ALL_GAMES;
 
     private View view;
     private SwipeRefreshLayout swipeContainer;
 
     private JSONObject jsonDataString;
-    private String url = Urls.ALL_GAMES;
     private RequestQueue requestQueue;
     private StringRequest stringRequest;
-
     private ArrayList<String> gameList = new ArrayList<>();
-
     private Snackbar snackbar;
-
     private SharedPreferences settingsPrefs;
 
     @Override
@@ -81,7 +77,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
     }
 
     private StringRequest newStringRequest() {
-        stringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.i(TAG, response);
@@ -105,7 +101,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
                             });
                     snackbar.show();
                 }
-                Log.e(TAG, "Error getting JSON from " + url);
+                Log.e(TAG, "Error getting JSON from " + URL);
                 Log.e(TAG, error.toString());
             }
         });
@@ -129,24 +125,19 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         } catch (JSONException e) {
             Log.e(TAG, "Error converting result to JSON object");
         }
-
-        ListView lvGames = (ListView) view.findViewById(R.id.lvGames);
-        lvGames.setVisibility(View.INVISIBLE);
-        ProgressBar progressBarMainScreen = (ProgressBar) view.findViewById(R.id.progressBarMainScreen);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewAll);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         getSelectedGamesFromSettings();
 
+        // No games are checked on settings menu
         if (gameList.isEmpty()) {
-            TextView tvNoGames = (TextView) view.findViewById(R.id.tvNoGames);
-            tvNoGames.setVisibility(View.VISIBLE);
-            progressBarMainScreen.setVisibility(View.INVISIBLE);
+            // TODO put message in here when no games are selected
         } else {
-            AllGamesArrayAdapter allGamesArrayAdapter = new AllGamesArrayAdapter(
-                    getActivity().getApplicationContext(), gameList, jsonDataString);
-            lvGames.setAdapter(allGamesArrayAdapter);
-
-            progressBarMainScreen.setVisibility(View.INVISIBLE);
-            lvGames.setVisibility(View.VISIBLE);
+            AllGamesRecyclerAdapter allGamesRecyclerAdapter =
+                    new AllGamesRecyclerAdapter(gameList, jsonDataString);
+            recyclerView.setAdapter(allGamesRecyclerAdapter);
+            recyclerView.setVisibility(View.VISIBLE);
         }
     }
 

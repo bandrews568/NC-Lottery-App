@@ -77,11 +77,6 @@ public class Cash5RecyclerAdapter extends RecyclerView.Adapter<Cash5RecyclerAdap
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
-    }
-
-    @Override
     public int getItemCount() {
         return cash5List.size();
     }

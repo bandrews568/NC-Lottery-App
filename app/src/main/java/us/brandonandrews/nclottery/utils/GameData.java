@@ -3,6 +3,7 @@ package us.brandonandrews.nclottery.utils;
 
 import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,6 +25,12 @@ import us.brandonandrews.nclottery.models.MegaMillions;
 import us.brandonandrews.nclottery.models.Pick3;
 import us.brandonandrews.nclottery.models.Pick4;
 import us.brandonandrews.nclottery.models.Powerball;
+import us.brandonandrews.nclottery.viewholders.Cash5ViewHolder;
+import us.brandonandrews.nclottery.viewholders.LuckyForLifeViewHolder;
+import us.brandonandrews.nclottery.viewholders.MegaMillionsViewHolder;
+import us.brandonandrews.nclottery.viewholders.Pick3ViewHolder;
+import us.brandonandrews.nclottery.viewholders.Pick4ViewHolder;
+import us.brandonandrews.nclottery.viewholders.PowerballViewHolder;
 
 public class GameData {
 
@@ -289,6 +296,65 @@ public class GameData {
                 }
                 break;
         }
+    }
+
+    public static void setupPick3ViewHolder(Pick3ViewHolder viewHolder, HashMap<String, String> data) {
+        viewHolder.getTvDate().setText(data.get("date"));
+        viewHolder.getTvTime().setText(data.get("time"));
+        viewHolder.getTvBall1().setText(data.get("ball1"));
+        viewHolder.getTvBall2().setText(data.get("ball2"));
+        viewHolder.getTvBall3().setText(data.get("ball3"));
+    }
+
+    public static void setupPick4ViewHolder(Pick4ViewHolder viewHolder, HashMap<String, String> data) {
+        viewHolder.getTvDate().setText(data.get("date"));
+        viewHolder.getTvTime().setText(data.get("time"));
+        viewHolder.getTvBall1().setText(data.get("ball1"));
+        viewHolder.getTvBall2().setText(data.get("ball2"));
+        viewHolder.getTvBall3().setText(data.get("ball3"));
+        viewHolder.getTvBall4().setText(data.get("ball4"));
+    }
+
+    public static void setupCash5ViewHolder(Cash5ViewHolder viewHolder, HashMap<String, String> data) {
+        viewHolder.getTvDate().setText(data.get("date"));
+        viewHolder.getTvBall1().setText(data.get("ball1"));
+        viewHolder.getTvBall2().setText(data.get("ball2"));
+        viewHolder.getTvBall3().setText(data.get("ball3"));
+        viewHolder.getTvBall4().setText(data.get("ball4"));
+        viewHolder.getTvBall5().setText(data.get("ball5"));
+        viewHolder.getTvJackpot().setText(data.get("jackpot"));
+    }
+
+    public static void setupLuckyForLifeViewHolder(LuckyForLifeViewHolder viewHolder, HashMap<String, String> data) {
+        viewHolder.getTvDate().setText(data.get("date"));
+        viewHolder.getTvBall1().setText(data.get("ball1"));
+        viewHolder.getTvBall2().setText(data.get("ball2"));
+        viewHolder.getTvBall3().setText(data.get("ball3"));
+        viewHolder.getTvBall4().setText(data.get("ball4"));
+        viewHolder.getTvBall5().setText(data.get("ball5"));
+        viewHolder.getTvBall6().setText(data.get("ball6"));
+    }
+
+    public static void setupMegaMillionsViewHolder(MegaMillionsViewHolder viewHolder, HashMap<String, String> data) {
+        viewHolder.getTvDate().setText(data.get("date"));
+        viewHolder.getTvBall1().setText(data.get("ball1"));
+        viewHolder.getTvBall2().setText(data.get("ball2"));
+        viewHolder.getTvBall3().setText(data.get("ball3"));
+        viewHolder.getTvBall4().setText(data.get("ball4"));
+        viewHolder.getTvBall5().setText(data.get("ball5"));
+        viewHolder.getTvMegaball().setText(data.get("megaball"));
+        viewHolder.getTvMultiplier().setText(data.get("multiplier"));
+    }
+
+    public static void setupPowerballViewHolder(PowerballViewHolder viewHolder, HashMap<String, String> data) {
+        viewHolder.getTvDate().setText(data.get("date"));
+        viewHolder.getTvBall1().setText(data.get("ball1"));
+        viewHolder.getTvBall2().setText(data.get("ball2"));
+        viewHolder.getTvBall3().setText(data.get("ball3"));
+        viewHolder.getTvBall4().setText(data.get("ball4"));
+        viewHolder.getTvBall5().setText(data.get("ball5"));
+        viewHolder.getTvPowerball().setText(data.get("powerball"));
+        viewHolder.getTvPowerplay().setText(data.get("powerplay"));
     }
 
     public static View setupPick3View(View view, String[] numbers) {
