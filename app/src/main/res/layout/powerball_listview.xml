@@ -71,14 +71,14 @@
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="53dp"
-        android:layout_marginRight="53dp"
         android:text="*Date*"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tvGameName"
-        app:layout_constraintRight_toRightOf="parent"
         tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
         android:id="@+id/tvGameName"

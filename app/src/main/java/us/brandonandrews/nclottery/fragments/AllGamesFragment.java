@@ -70,7 +70,6 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
 
         requestQueue.add(newStringRequest());
 
-        // TODO change the color of this to fit the rest of the UI
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                                                android.R.color.holo_green_light,
                                                android.R.color.holo_orange_light,
@@ -150,6 +149,14 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         for (String game : games) {
             boolean getGame = settingsPrefs.getBoolean(game, false);
             if (getGame) {
+                gameList.add(game);
+            }
+        }
+
+        // Used to populate all games when the user starts the app for the first time
+        // and doesn't have any games checked on or off in the settings menu.
+        if (gameList.isEmpty()) {
+            for (String game : games) {
                 gameList.add(game);
             }
         }

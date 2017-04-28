@@ -9,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
@@ -49,6 +51,7 @@ public class Pick3Fragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
     }
 
@@ -71,7 +74,6 @@ public class Pick3Fragment extends Fragment {
                 requestQueue.add(newStringRequest(URL, view));
             }
         });
-
         requestQueue.add(newStringRequest(URL, view));
     }
 
@@ -111,6 +113,29 @@ public class Pick3Fragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
+        requestQueue.stop();
+
+        // Clear the snackbar so users don't get confused when they switch screens
+        if (snackbar != null) {
+            snackbar.dismiss();
+        }
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.findItem(R.id.miFilter).setVisible(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.miFilter) {
+            getFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_activity_fragment_placeholder, new FilterFragment())
+                    .commit();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void setupRecyclerView(View view) {

@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -48,6 +49,7 @@ public class LuckyForLifeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
     }
 
@@ -115,6 +117,12 @@ public class LuckyForLifeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.findItem(R.id.miFilter).setVisible(true);
     }
 
     private void setupRecyclerView(View view) {
