@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,11 +38,12 @@ public class Cash5Fragment extends android.support.v4.app.Fragment {
     private static final String TAG = "CASH5 RESULTS FRAGMENT";
     private static final String URL = Urls.CASH5;
 
-    private Context context;
     private RecyclerView recyclerView;
     private Cash5RecyclerAdapter resultsAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private Snackbar snackbar;
+    private ProgressBar progressBar;
+
     private List<Cash5> cash5List;
     private String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
@@ -62,6 +64,7 @@ public class Cash5Fragment extends android.support.v4.app.Fragment {
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBarCash5);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                                                    android.R.color.holo_green_light,
@@ -129,5 +132,7 @@ public class Cash5Fragment extends android.support.v4.app.Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewCash5);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(resultsAdapter);
+        progressBar.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 }

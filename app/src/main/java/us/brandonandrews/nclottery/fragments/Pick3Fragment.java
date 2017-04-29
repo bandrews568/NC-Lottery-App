@@ -41,6 +41,7 @@ public class Pick3Fragment extends Fragment {
 
     private RecyclerView recyclerView;
     private List<Pick3> pick3List;
+    private ProgressBar progressBar;
     private String jsonString;
     private List<JSONObject> jsonObjectList = new ArrayList<>();
     private RequestQueue requestQueue;
@@ -63,6 +64,7 @@ public class Pick3Fragment extends Fragment {
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBarPick3);
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                                                android.R.color.holo_green_light,
@@ -139,6 +141,7 @@ public class Pick3Fragment extends Fragment {
             getFragmentManager()
                     .beginTransaction()
                     .replace(R.id.main_activity_fragment_placeholder, new FilterFragment())
+                    .addToBackStack(null)
                     .commit();
         }
         return super.onOptionsItemSelected(item);
@@ -150,5 +153,7 @@ public class Pick3Fragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPick3);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(resultsAdapter);
+        progressBar.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 }

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -38,6 +39,7 @@ public class Pick4Fragment extends android.support.v4.app.Fragment {
     private RecyclerView recyclerView;
     private Pick4RecyclerAdapter resultsAdapter;
     private SwipeRefreshLayout swipeContainer;
+    private ProgressBar progressBar;
     private Snackbar snackbar;
 
     private List<Pick4> pick4List;
@@ -60,6 +62,7 @@ public class Pick4Fragment extends android.support.v4.app.Fragment {
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBarPick4);
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                                                android.R.color.holo_green_light,
@@ -131,5 +134,7 @@ public class Pick4Fragment extends android.support.v4.app.Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPick4);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(resultsAdapter);
+        progressBar.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 }

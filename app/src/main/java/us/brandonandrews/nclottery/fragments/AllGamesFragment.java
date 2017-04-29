@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
 
     private View view;
     private SwipeRefreshLayout swipeContainer;
+    private ProgressBar progressBar;
 
     private JSONObject jsonDataString;
     private RequestQueue requestQueue;
@@ -60,6 +62,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
 
         requestQueue = Volley.newRequestQueue(getActivity().getApplicationContext());
 
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBarAllGames);
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -154,6 +157,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         } else {
             AllGamesRecyclerAdapter allGamesRecyclerAdapter =
                     new AllGamesRecyclerAdapter(gameList, jsonDataString);
+            progressBar.setVisibility(View.INVISIBLE);
             recyclerView.setAdapter(allGamesRecyclerAdapter);
             recyclerView.setVisibility(View.VISIBLE);
         }

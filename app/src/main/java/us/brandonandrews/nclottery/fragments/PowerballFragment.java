@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,6 +40,7 @@ public class PowerballFragment extends android.support.v4.app.Fragment {
     private PowerballRecyclerAdapter resultsAdapter;
     private SwipeRefreshLayout swipeContainer;
     private Snackbar snackbar;
+    private ProgressBar progressBar;
 
     private List<Powerball> powerballList;
     private String jsonString;
@@ -60,6 +62,7 @@ public class PowerballFragment extends android.support.v4.app.Fragment {
 
     @Override
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
+        progressBar = (ProgressBar) view.findViewById(R.id.progressBarPowerball);
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                                                android.R.color.holo_green_light,
@@ -131,5 +134,7 @@ public class PowerballFragment extends android.support.v4.app.Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewPowerball);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(resultsAdapter);
+        progressBar.setVisibility(View.INVISIBLE);
+        recyclerView.setVisibility(View.VISIBLE);
     }
 }
