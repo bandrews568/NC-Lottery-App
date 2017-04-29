@@ -116,6 +116,7 @@ public class MegaMillionsFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getActivity().setTitle("Mega Millions");
     }
 
     @Override

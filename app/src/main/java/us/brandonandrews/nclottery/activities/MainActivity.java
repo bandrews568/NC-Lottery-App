@@ -12,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -71,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager()
                     .beginTransaction()
                     .replace(R.id.main_activity_fragment_placeholder, new SettingsFragment())
+                    .addToBackStack(null)
                     .commit();
+            setTitle("Settings");
         }
 
         return super.onOptionsItemSelected(item);
@@ -146,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
+            Log.e(TAG, "selectDrawerItem: " + fragmentTag);
             e.printStackTrace();
         }
 
@@ -153,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager
                 .beginTransaction()
                 .replace(R.id.main_activity_fragment_placeholder, fragment, fragmentTag)
+                .addToBackStack(null)
                 .commit();
 
         menuItem.setChecked(true);

@@ -118,7 +118,19 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
             snackbar.dismiss();
         }
     }
-    
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        gameList.clear();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle("All Games");
+    }
+
     private void updateUI(String jsonString) {
         try {
             jsonDataString = new JSONObject(jsonString);
@@ -145,18 +157,10 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
 
     private void getSelectedGamesFromSettings() {
         String[] games = {"pick3", "pick4", "cash5", "luckyForLife", "megaMillions", "powerball"};
-
+        // TODO bug fix: the first time a user opens the app there is no games shown
         for (String game : games) {
             boolean getGame = settingsPrefs.getBoolean(game, false);
             if (getGame) {
-                gameList.add(game);
-            }
-        }
-
-        // Used to populate all games when the user starts the app for the first time
-        // and doesn't have any games checked on or off in the settings menu.
-        if (gameList.isEmpty()) {
-            for (String game : games) {
                 gameList.add(game);
             }
         }

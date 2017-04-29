@@ -78,6 +78,18 @@ public class Cash5Fragment extends android.support.v4.app.Fragment {
         requestQueue.add(newStringRequest(URL, view));
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle("Cash 5");
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        menu.findItem(R.id.miFilter).setVisible(true);
+    }
+
     private StringRequest newStringRequest(final String url, final View view) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -109,12 +121,6 @@ public class Cash5Fragment extends android.support.v4.app.Fragment {
             }
         });
         return stringRequest;
-    }
-
-    @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-        super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.miFilter).setVisible(true);
     }
 
     private void setupRecyclerView(View view) {

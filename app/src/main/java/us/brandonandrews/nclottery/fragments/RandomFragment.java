@@ -55,6 +55,12 @@ public class RandomFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle("Random");
+    }
+
     private void setupFrameLayout(String game) {
         int layout;
         String[] numbers;

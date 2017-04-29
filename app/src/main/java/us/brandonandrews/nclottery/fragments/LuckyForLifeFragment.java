@@ -117,6 +117,7 @@ public class LuckyForLifeFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getActivity().setTitle("Lucky For Life");
     }
 
     @Override

@@ -116,6 +116,7 @@ public class Pick4Fragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getActivity().setTitle("Pick4");
     }
 
     @Override

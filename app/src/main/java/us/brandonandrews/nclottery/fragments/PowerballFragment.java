@@ -116,6 +116,7 @@ public class PowerballFragment extends android.support.v4.app.Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getActivity().setTitle("Powerball");
     }
 
     @Override
