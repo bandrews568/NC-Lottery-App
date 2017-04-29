@@ -1,13 +1,15 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.fragments.PowerballFragment;
 
 
-public class PowerballViewHolder extends RecyclerView.ViewHolder {
+public class PowerballViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private TextView tvDate;
     private TextView tvBall1;
@@ -28,6 +30,19 @@ public class PowerballViewHolder extends RecyclerView.ViewHolder {
         tvBall5 = (TextView) itemView.findViewById(R.id.tvBall5);
         tvPowerball = (TextView) itemView.findViewById(R.id.tvPowerball);
         tvPowerplay = (TextView) itemView.findViewById(R.id.tvPowerplay);
+        view.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+        PowerballFragment powerballFragment = new PowerballFragment();
+        activity
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_activity_fragment_placeholder, powerballFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public TextView getTvDate() {

@@ -1,13 +1,15 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.fragments.LuckyForLifeFragment;
 
 
-public class LuckyForLifeViewHolder extends RecyclerView.ViewHolder {
+public class LuckyForLifeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private TextView tvDate;
     private TextView tvBall1;
@@ -26,6 +28,19 @@ public class LuckyForLifeViewHolder extends RecyclerView.ViewHolder {
         tvBall4 = (TextView) itemView.findViewById(R.id.tvBall4);
         tvBall5 = (TextView) itemView.findViewById(R.id.tvBall5);
         tvBall6 = (TextView) itemView.findViewById(R.id.tvBall6);
+        view.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+        LuckyForLifeFragment luckyForLifeFragment = new LuckyForLifeFragment();
+        activity
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_activity_fragment_placeholder, luckyForLifeFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public TextView getTvDate() {

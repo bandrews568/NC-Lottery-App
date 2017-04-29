@@ -1,13 +1,15 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.fragments.Pick4Fragment;
 
 
-public class Pick4ViewHolder extends RecyclerView.ViewHolder {
+public class Pick4ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private TextView tvTime;
     private TextView tvDate;
@@ -26,6 +28,19 @@ public class Pick4ViewHolder extends RecyclerView.ViewHolder {
         tvBall3 = (TextView) itemView.findViewById(R.id.tvBall3);
         tvBall4 = (TextView) itemView.findViewById(R.id.tvBall4);
         tvSum = (TextView) itemView.findViewById(R.id.tvSum);
+        view.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+        Pick4Fragment pick4Fragment = new Pick4Fragment();
+        activity
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_activity_fragment_placeholder, pick4Fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public TextView getTvTime() {

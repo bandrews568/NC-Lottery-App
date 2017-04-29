@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -80,7 +81,10 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.i(TAG, response);
+                if (snackbar != null) {
+                    snackbar.dismiss();
+                }
+
                 updateUI(response);
                 swipeContainer.setRefreshing(false);
                 refreshToast();

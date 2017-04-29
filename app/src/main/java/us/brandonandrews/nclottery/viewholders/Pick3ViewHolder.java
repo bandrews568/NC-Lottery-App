@@ -1,13 +1,17 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.fragments.Pick3Fragment;
 
 
-public class Pick3ViewHolder extends RecyclerView.ViewHolder {
+public class Pick3ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     private TextView tvTime;
     private TextView tvDate;
@@ -25,6 +29,21 @@ public class Pick3ViewHolder extends RecyclerView.ViewHolder {
         tvBall2 = (TextView) itemView.findViewById(R.id.tvBall2);
         tvBall3 = (TextView) itemView.findViewById(R.id.tvBall3);
         tvSum = (TextView) itemView.findViewById(R.id.tvSum);
+        view.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (getAdapterPosition() != RecyclerView.NO_POSITION) {
+            AppCompatActivity activity = (AppCompatActivity) v.getContext();
+            Pick3Fragment pick3Fragment = new Pick3Fragment();
+            activity
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.main_activity_fragment_placeholder, pick3Fragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     public TextView getTvTime() {

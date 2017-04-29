@@ -1,5 +1,6 @@
 package us.brandonandrews.nclottery.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,6 +29,7 @@ public class AllGamesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     private List<String> gamesList;
     private JSONObject jsonObject;
+    private Context context;
 
     public AllGamesRecyclerAdapter(List<String> gamesList, JSONObject jsonObject) {
         this.gamesList = gamesList;

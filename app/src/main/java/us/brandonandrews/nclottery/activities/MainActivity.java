@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
             setTitle("Settings");
         }
-
         return super.onOptionsItemSelected(item);
     }
 

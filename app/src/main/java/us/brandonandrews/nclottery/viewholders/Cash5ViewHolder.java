@@ -1,13 +1,15 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
+import us.brandonandrews.nclottery.fragments.Cash5Fragment;
 
 
-public class Cash5ViewHolder extends RecyclerView.ViewHolder {
+public class Cash5ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private TextView tvDate;
     private TextView tvBall1;
@@ -26,6 +28,19 @@ public class Cash5ViewHolder extends RecyclerView.ViewHolder {
         tvBall4 = (TextView) itemView.findViewById(R.id.tvBall4);
         tvBall5 = (TextView) itemView.findViewById(R.id.tvBall5);
         tvJackpot = (TextView) itemView.findViewById(R.id.tvJackpot);
+        view.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+        Cash5Fragment cash5Fragment = new Cash5Fragment();
+        activity
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.main_activity_fragment_placeholder, cash5Fragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     public TextView getTvDate() {
