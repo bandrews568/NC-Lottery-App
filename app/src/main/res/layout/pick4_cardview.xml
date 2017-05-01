@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="#E6E6E6"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="8dp"
+    card_view:cardUseCompatPadding="true">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="25dp">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/ivBall1"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            app:srcCompat="@drawable/ball"
+            tools:layout_editor_absoluteY="50dp" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="16dp"
+            android:text="*Time*"
+            app:layout_constraintLeft_toRightOf="@+id/tvGameName"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="*Date*"
+            android:textSize="18sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivBall2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-1dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            app:srcCompat="@drawable/ball" />
+
+        <ImageView
+            android:id="@+id/ivBall1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/ivBall2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            app:srcCompat="@drawable/ball"
+            tools:layout_editor_absoluteY="50dp" />
+
+        <TextView
+            android:id="@+id/tvGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="Pick4"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvBall3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+            app:layout_constraintLeft_toLeftOf="@+id/imageView4"
+            app:layout_constraintRight_toRightOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.518" />
+
+        <TextView
+            android:id="@+id/tvBall1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBall2"
+            app:layout_constraintLeft_toLeftOf="@+id/ivBall2"
+            app:layout_constraintRight_toRightOf="@+id/ivBall2"
+            app:layout_constraintTop_toTopOf="@+id/ivBall2"
+            app:layout_constraintVertical_bias="0.518" />
+
+        <ImageView
+            android:id="@+id/ivBall3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            app:srcCompat="@drawable/ball"
+            tools:layout_editor_absoluteY="50dp" />
+
+        <TextView
+            android:id="@+id/tvBall4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBall3"
+            app:layout_constraintLeft_toLeftOf="@+id/ivBall3"
+            app:layout_constraintRight_toRightOf="@+id/ivBall3"
+            app:layout_constraintTop_toTopOf="@+id/ivBall3"
+            app:layout_constraintVertical_bias="0.518" />
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="40dp"
+            android:layout_height="35dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/holo_green_light"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/ivBall3"
+            app:layout_constraintTop_toBottomOf="@+id/guideline"
+            app:layout_constraintVertical_bias="0.05" />
+
+        <TextView
+            android:id="@+id/tvSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/surfaceView"
+            app:layout_constraintLeft_toLeftOf="@+id/surfaceView"
+            app:layout_constraintRight_toRightOf="@+id/surfaceView"
+            app:layout_constraintTop_toTopOf="@+id/surfaceView"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/tvBall2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/ivBall1"
+            app:layout_constraintLeft_toLeftOf="@+id/ivBall1"
+            app:layout_constraintRight_toRightOf="@+id/ivBall1"
+            app:layout_constraintTop_toTopOf="@+id/ivBall1"
+            app:layout_constraintVertical_bias="0.518" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="49dp" />
+
+        <Button
+            android:id="@+id/btnPastResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Past results"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivBall2" />
+
+        <Button
+            android:id="@+id/btnSmartPicks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="Smart Picks"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnPastResults"
+            app:layout_constraintLeft_toRightOf="@+id/btnPastResults" />
+
+    </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>

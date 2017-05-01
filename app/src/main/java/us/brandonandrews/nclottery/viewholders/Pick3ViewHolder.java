@@ -1,17 +1,20 @@
 package us.brandonandrews.nclottery.viewholders;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.fragments.Pick3Fragment;
+import us.brandonandrews.nclottery.fragments.SmartPicksFragment;
 
 
-public class Pick3ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class Pick3ViewHolder extends RecyclerView.ViewHolder {
 
     private TextView tvTime;
     private TextView tvDate;
@@ -20,30 +23,45 @@ public class Pick3ViewHolder extends RecyclerView.ViewHolder implements View.OnC
     private TextView tvBall3;
     private TextView tvSum;
 
-    public Pick3ViewHolder(View view) {
+    public Pick3ViewHolder(View view, final Context context) {
         super(view);
-
         tvTime = (TextView) itemView.findViewById(R.id.tvTime);
         tvDate = (TextView) itemView.findViewById(R.id.tvDate);
         tvBall1 = (TextView) itemView.findViewById(R.id.tvBall1);
         tvBall2 = (TextView) itemView.findViewById(R.id.tvBall2);
         tvBall3 = (TextView) itemView.findViewById(R.id.tvBall3);
         tvSum = (TextView) itemView.findViewById(R.id.tvSum);
-        view.setOnClickListener(this);
-    }
+        Button btnPastResults = (Button) itemView.findViewById(R.id.btnPastResults);
+        Button btnSmartPicks = (Button) itemView.findViewById(R.id.btnSmartPicks);
+        final FragmentManager fragmentManager =
+                ((AppCompatActivity) context).getSupportFragmentManager();
 
-    @Override
-    public void onClick(View v) {
-        if (getAdapterPosition() != RecyclerView.NO_POSITION) {
-            AppCompatActivity activity = (AppCompatActivity) v.getContext();
-            Pick3Fragment pick3Fragment = new Pick3Fragment();
-            activity
-                    .getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.main_activity_fragment_placeholder, pick3Fragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
+
+        btnPastResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, new Pick3Fragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        btnSmartPicks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("game", "pick3");
+                SmartPicksFragment smartPicksFragment = new SmartPicksFragment();
+                smartPicksFragment.setArguments(bundle);
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, smartPicksFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     public TextView getTvTime() {

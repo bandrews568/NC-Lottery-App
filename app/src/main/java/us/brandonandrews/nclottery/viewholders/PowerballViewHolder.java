@@ -1,15 +1,20 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.fragments.PowerballFragment;
+import us.brandonandrews.nclottery.fragments.SmartPicksFragment;
 
 
-public class PowerballViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class PowerballViewHolder extends RecyclerView.ViewHolder {
 
     private TextView tvDate;
     private TextView tvBall1;
@@ -20,7 +25,7 @@ public class PowerballViewHolder extends RecyclerView.ViewHolder implements View
     private TextView tvPowerball;
     private TextView tvPowerplay;
 
-    public PowerballViewHolder(View view) {
+    public PowerballViewHolder(View view, Context context) {
         super(view);
         tvDate = (TextView) itemView.findViewById(R.id.tvDate);
         tvBall1 = (TextView) itemView.findViewById(R.id.tvBall1);
@@ -30,19 +35,37 @@ public class PowerballViewHolder extends RecyclerView.ViewHolder implements View
         tvBall5 = (TextView) itemView.findViewById(R.id.tvBall5);
         tvPowerball = (TextView) itemView.findViewById(R.id.tvPowerball);
         tvPowerplay = (TextView) itemView.findViewById(R.id.tvPowerplay);
-        view.setOnClickListener(this);
-    }
+        Button btnPastResults = (Button) itemView.findViewById(R.id.btnPastResults);
+        Button btnSmartPicks = (Button) itemView.findViewById(R.id.btnSmartPicks);
+        final FragmentManager fragmentManager =
+                ((AppCompatActivity) context).getSupportFragmentManager();
 
-    @Override
-    public void onClick(View v) {
-        AppCompatActivity activity = (AppCompatActivity) v.getContext();
-        PowerballFragment powerballFragment = new PowerballFragment();
-        activity
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_activity_fragment_placeholder, powerballFragment)
-                .addToBackStack(null)
-                .commit();
+
+        btnPastResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, new PowerballFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        btnSmartPicks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("game", "powerball");
+                SmartPicksFragment smartPicksFragment = new SmartPicksFragment();
+                smartPicksFragment.setArguments(bundle);
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, smartPicksFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     public TextView getTvDate() {

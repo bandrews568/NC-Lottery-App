@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="#E6E6E6"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="8dp"
+    card_view:cardUseCompatPadding="true">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/guideline3"
+            app:srcCompat="@drawable/ball"
+            tools:layout_editor_absoluteY="55dp" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/guideline3"
+            app:srcCompat="@drawable/ball"
+            tools:layout_editor_absoluteY="55dp" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/guideline3"
+            app:srcCompat="@drawable/ball"
+            tools:layout_editor_absoluteY="55dp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="-1dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline3"
+            app:srcCompat="@drawable/ball" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="0dp"
+            app:layout_constraintLeft_toRightOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/guideline3"
+            app:srcCompat="@drawable/ball"
+            tools:layout_editor_absoluteY="55dp" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:text="*Date*"
+            android:textSize="18sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintTop_creator="1" />
+
+        <TextView
+            android:id="@+id/tvGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:text="Lucky For Life"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintTop_creator="1" />
+
+        <TextView
+            android:id="@+id/tvBall1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintLeft_toLeftOf="@+id/imageView2"
+            app:layout_constraintRight_toLeftOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.518"
+            tools:layout_constraintBaseline_creator="1"
+            tools:layout_constraintLeft_creator="1" />
+
+        <TextView
+            android:id="@+id/tvBall2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintLeft_toLeftOf="@+id/imageView3"
+            app:layout_constraintRight_toLeftOf="@+id/imageView5"
+            app:layout_constraintTop_toTopOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.518"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintTop_creator="1" />
+
+        <TextView
+            android:id="@+id/tvBall3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+            app:layout_constraintHorizontal_bias="0.222"
+            app:layout_constraintLeft_toLeftOf="@+id/imageView5"
+            app:layout_constraintRight_toLeftOf="@+id/imageView6"
+            app:layout_constraintTop_toTopOf="@+id/imageView5"
+            app:layout_constraintVertical_bias="0.518"
+            tools:layout_constraintBaseline_creator="1"
+            tools:layout_constraintLeft_creator="1" />
+
+        <TextView
+            android:id="@+id/tvBall4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="8dp"
+            android:text="$"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+            app:layout_constraintHorizontal_bias="0.305"
+            app:layout_constraintLeft_toLeftOf="@+id/imageView6"
+            app:layout_constraintRight_toLeftOf="@+id/imageView7"
+            app:layout_constraintTop_toTopOf="@+id/imageView6"
+            app:layout_constraintVertical_bias="0.518"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintTop_creator="1" />
+
+        <TextView
+            android:id="@+id/tvBall5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:text="$"
+            tools:layout_constraintBaseline_creator="1"
+            tools:layout_constraintRight_creator="1"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="@+id/imageView7"
+            app:layout_constraintLeft_toRightOf="@+id/imageView6"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvBall4" />
+
+        <TextView
+            android:id="@+id/tvBall6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:text="$"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintTop_creator="1"
+            app:layout_constraintLeft_toRightOf="@+id/textView6"
+            android:layout_marginLeft="4dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/textView6" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="74dp" />
+
+        <Button
+            android:id="@+id/btnPastResults"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="8dp"
+            android:text="past results"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <Button
+            android:id="@+id/btnSmartPicks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="8dp"
+            android:text="smart picks"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnPastResults"
+            app:layout_constraintLeft_toRightOf="@+id/btnPastResults" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Lucky Ball:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvGameName" />
+
+    </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>

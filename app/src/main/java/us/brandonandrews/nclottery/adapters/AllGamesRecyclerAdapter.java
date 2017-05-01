@@ -31,9 +31,10 @@ public class AllGamesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     private JSONObject jsonObject;
     private Context context;
 
-    public AllGamesRecyclerAdapter(List<String> gamesList, JSONObject jsonObject) {
+    public AllGamesRecyclerAdapter(List<String> gamesList, JSONObject jsonObject, Context context) {
         this.gamesList = gamesList;
         this.jsonObject = jsonObject;
+        this.context = context;
     }
 
     @Override
@@ -48,28 +49,28 @@ public class AllGamesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
         switch (gamesList.get(viewType)) {
             case "pick3":
-                View pick3View = inflater.inflate(R.layout.pick3_listview, parent, false);
-                viewHolder = new Pick3ViewHolder(pick3View);
+                View pick3View = inflater.inflate(R.layout.pick3_cardview, parent, false);
+                viewHolder = new Pick3ViewHolder(pick3View, context);
                 break;
             case "pick4":
-                View pick4View = inflater.inflate(R.layout.pick4_listview, parent, false);
-                viewHolder = new Pick4ViewHolder(pick4View);
+                View pick4View = inflater.inflate(R.layout.pick4_cardview, parent, false);
+                viewHolder = new Pick4ViewHolder(pick4View, context);
                 break;
             case "cash5":
-                View cash5View = inflater.inflate(R.layout.cash5_listview, parent, false);
-                viewHolder = new Cash5ViewHolder(cash5View);
+                View cash5View = inflater.inflate(R.layout.cash5_cardview, parent, false);
+                viewHolder = new Cash5ViewHolder(cash5View, context);
                 break;
             case "luckyForLife":
-                View luckyForLifeView = inflater.inflate(R.layout.lucky_for_life_listview, parent, false);
-                viewHolder = new LuckyForLifeViewHolder(luckyForLifeView);
+                View luckyForLifeView = inflater.inflate(R.layout.lucky_for_life_cardview, parent, false);
+                viewHolder = new LuckyForLifeViewHolder(luckyForLifeView, context);
                 break;
             case "powerball":
-                View powerballView = inflater.inflate(R.layout.powerball_listview, parent, false);
-                viewHolder = new PowerballViewHolder(powerballView);
+                View powerballView = inflater.inflate(R.layout.powerball_cardview, parent, false);
+                viewHolder = new PowerballViewHolder(powerballView, context);
                 break;
             case "megaMillions":
-                View megaMillionsView = inflater.inflate(R.layout.mega_millions_listview, parent, false);
-                viewHolder = new MegaMillionsViewHolder(megaMillionsView);
+                View megaMillionsView = inflater.inflate(R.layout.mega_millions_cardview, parent, false);
+                viewHolder = new MegaMillionsViewHolder(megaMillionsView, context);
                 break;
         }
         return viewHolder;

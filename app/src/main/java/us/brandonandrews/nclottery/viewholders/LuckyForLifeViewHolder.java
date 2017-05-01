@@ -1,15 +1,20 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.fragments.LuckyForLifeFragment;
+import us.brandonandrews.nclottery.fragments.SmartPicksFragment;
 
 
-public class LuckyForLifeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class LuckyForLifeViewHolder extends RecyclerView.ViewHolder {
 
     private TextView tvDate;
     private TextView tvBall1;
@@ -19,7 +24,7 @@ public class LuckyForLifeViewHolder extends RecyclerView.ViewHolder implements V
     private TextView tvBall5;
     private TextView tvBall6;
 
-    public LuckyForLifeViewHolder(View view) {
+    public LuckyForLifeViewHolder(View view, Context context) {
         super(view);
         tvDate = (TextView) itemView.findViewById(R.id.tvDate);
         tvBall1 = (TextView) itemView.findViewById(R.id.tvBall1);
@@ -28,19 +33,36 @@ public class LuckyForLifeViewHolder extends RecyclerView.ViewHolder implements V
         tvBall4 = (TextView) itemView.findViewById(R.id.tvBall4);
         tvBall5 = (TextView) itemView.findViewById(R.id.tvBall5);
         tvBall6 = (TextView) itemView.findViewById(R.id.tvBall6);
-        view.setOnClickListener(this);
-    }
+        Button btnPastResults = (Button) itemView.findViewById(R.id.btnPastResults);
+        Button btnSmartPicks = (Button) itemView.findViewById(R.id.btnSmartPicks);
+        final FragmentManager fragmentManager =
+                ((AppCompatActivity) context).getSupportFragmentManager();
 
-    @Override
-    public void onClick(View v) {
-        AppCompatActivity activity = (AppCompatActivity) v.getContext();
-        LuckyForLifeFragment luckyForLifeFragment = new LuckyForLifeFragment();
-        activity
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_activity_fragment_placeholder, luckyForLifeFragment)
-                .addToBackStack(null)
-                .commit();
+        btnPastResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, new LuckyForLifeFragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        btnSmartPicks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("game", "luckyForLife");
+                SmartPicksFragment smartPicksFragment = new SmartPicksFragment();
+                smartPicksFragment.setArguments(bundle);
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, smartPicksFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     public TextView getTvDate() {

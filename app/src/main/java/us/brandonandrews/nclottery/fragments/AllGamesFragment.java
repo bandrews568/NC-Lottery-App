@@ -80,6 +80,12 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
                                                android.R.color.holo_red_light);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle("All Games");
+    }
+
     private StringRequest newStringRequest() {
         stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -132,12 +138,6 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
         gameList.clear();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        getActivity().setTitle("All Games");
-    }
-
     private void updateUI(String jsonString) {
         try {
             jsonDataString = new JSONObject(jsonString);
@@ -156,7 +156,7 @@ public class AllGamesFragment extends android.support.v4.app.Fragment {
             recyclerView.setVisibility(View.INVISIBLE);
         } else {
             AllGamesRecyclerAdapter allGamesRecyclerAdapter =
-                    new AllGamesRecyclerAdapter(gameList, jsonDataString);
+                    new AllGamesRecyclerAdapter(gameList, jsonDataString, view.getContext());
             progressBar.setVisibility(View.INVISIBLE);
             recyclerView.setAdapter(allGamesRecyclerAdapter);
             recyclerView.setVisibility(View.VISIBLE);

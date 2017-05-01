@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvDigitOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top 3 hot numbers on digit 1:"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tvDigitsOneNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="#"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintLeft_toRightOf="@+id/tvDigitOne"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDigitTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Top 3 hot numbers on digit 2:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDigitOne" />
+
+    <TextView
+        android:id="@+id/tvDigitsTwoNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="#"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintLeft_toRightOf="@+id/tvDigitTwo"
+        app:layout_constraintTop_toBottomOf="@+id/tvDigitsOneNumbers" />
+
+    <TextView
+        android:id="@+id/tvDigitThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Top 3 hot numbers on digit 3:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDigitTwo" />
+
+    <TextView
+        android:id="@+id/tvDigitsThreeNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="#"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintLeft_toRightOf="@+id/tvDigitThree"
+        app:layout_constraintTop_toBottomOf="@+id/tvDigitsTwoNumbers" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Smart Picks"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="118dp"
+        app:layout_constraintHorizontal_bias="0.502" />
+
+    <TextView
+        android:id="@+id/tvSmartPickOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline7"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.16" />
+
+    <TextView
+        android:id="@+id/tvSmartPickTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickOne" />
+
+    <TextView
+        android:id="@+id/tvSmartPickThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickTwo" />
+
+    <TextView
+        android:id="@+id/tvSmartPickFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickThree" />
+
+    <TextView
+        android:id="@+id/tvSmartPickFive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickFour" />
+
+    <TextView
+        android:id="@+id/tvSmartPickSix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickFive" />
+
+    <TextView
+        android:id="@+id/tvSmartPickSeven"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickSix" />
+
+    <TextView
+        android:id="@+id/tvSmartPickEight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickSeven" />
+
+    <TextView
+        android:id="@+id/tvSmartPickNine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickEight" />
+
+    <TextView
+        android:id="@+id/tvSmartPickTen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/tvSmartPickNine" />
+
+    <TextView
+        android:id="@+id/tvDigitFour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Top 3 hot numbers on digit 4:"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDigitThree" />
+
+    <TextView
+        android:id="@+id/tvDigitsFourNumbers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="#"
+        android:textColor="@android:color/holo_red_dark"
+        app:layout_constraintLeft_toRightOf="@+id/tvDigitFour"
+        app:layout_constraintTop_toBottomOf="@+id/tvDigitsThreeNumbers" />
+</android.support.constraint.ConstraintLayout>

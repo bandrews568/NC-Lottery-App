@@ -1,15 +1,20 @@
 package us.brandonandrews.nclottery.viewholders;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import us.brandonandrews.nclottery.R;
 import us.brandonandrews.nclottery.fragments.Cash5Fragment;
+import us.brandonandrews.nclottery.fragments.SmartPicksFragment;
 
 
-public class Cash5ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class Cash5ViewHolder extends RecyclerView.ViewHolder {
 
     private TextView tvDate;
     private TextView tvBall1;
@@ -19,7 +24,7 @@ public class Cash5ViewHolder extends RecyclerView.ViewHolder implements View.OnC
     private TextView tvBall5;
     private TextView tvJackpot;
 
-    public Cash5ViewHolder(View view) {
+    public Cash5ViewHolder(View view, Context context) {
         super(view);
         tvDate = (TextView) itemView.findViewById(R.id.tvDate);
         tvBall1 = (TextView) itemView.findViewById(R.id.tvBall1);
@@ -28,19 +33,36 @@ public class Cash5ViewHolder extends RecyclerView.ViewHolder implements View.OnC
         tvBall4 = (TextView) itemView.findViewById(R.id.tvBall4);
         tvBall5 = (TextView) itemView.findViewById(R.id.tvBall5);
         tvJackpot = (TextView) itemView.findViewById(R.id.tvJackpot);
-        view.setOnClickListener(this);
-    }
+        Button btnPastResults = (Button) itemView.findViewById(R.id.btnPastResults);
+        Button btnSmartPicks = (Button) itemView.findViewById(R.id.btnSmartPicks);
+        final FragmentManager fragmentManager =
+                ((AppCompatActivity) context).getSupportFragmentManager();
 
-    @Override
-    public void onClick(View v) {
-        AppCompatActivity activity = (AppCompatActivity) v.getContext();
-        Cash5Fragment cash5Fragment = new Cash5Fragment();
-        activity
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.main_activity_fragment_placeholder, cash5Fragment)
-                .addToBackStack(null)
-                .commit();
+        btnPastResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, new Cash5Fragment())
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
+
+        btnSmartPicks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("game", "cash5");
+                SmartPicksFragment smartPicksFragment = new SmartPicksFragment();
+                smartPicksFragment.setArguments(bundle);
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.main_activity_fragment_placeholder, smartPicksFragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
     }
 
     public TextView getTvDate() {
